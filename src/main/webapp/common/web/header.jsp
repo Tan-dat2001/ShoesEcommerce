@@ -42,7 +42,7 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                aria-expanded="false">Tài khoản</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item nav-boxshadow"><a class="nav-link" href="login.html">Đăng nhập</a></li>
+                                <li class="nav-item nav-boxshadow"><a class="nav-link" href="login">Đăng nhập</a></li>
                                 <!-- <li class="nav-item"><a class="nav-link" href="">Hồ sơ</a></li>
                                 <li class="nav-item"><a class="nav-link" href="">Đăng xuất</a></li> -->
                             </ul>
