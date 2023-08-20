@@ -1,2 +1,4 @@
-package com.shoesecom.Model;public class Order {
+package com.shoesecom.Model;
+
+public class Order {
 }

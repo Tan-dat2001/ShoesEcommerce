@@ -76,7 +76,7 @@ public class AccountDAO implements IAccountDAO {
 
     public static void main(String[] args) {
         AccountDAO acc = new AccountDAO();
-        acc.checkLogin("hien@gmail.com","13");
+        acc.checkLogin("hien@gmail.com","123");
 
 
     }
