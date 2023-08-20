@@ -1,7 +1,7 @@
 package com.shoesecom.DAO.ImpDAO;
 
 import com.shoesecom.DAO.IAccountDAO;
-import com.shoesecom.DBConnect;
+import com.shoesecom.DbConnect.DBConnect;
 import com.shoesecom.Model.Account;
 
 import java.sql.PreparedStatement;
@@ -76,7 +76,7 @@ public class AccountDAO implements IAccountDAO {
 
     public static void main(String[] args) {
         AccountDAO acc = new AccountDAO();
-        acc.checkLogin("hien@gmail.com","123");
+        acc.checkLogin("user@gmail.com","user");
 
 
     }
