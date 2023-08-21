@@ -1,6 +1,7 @@
 package com.shoesecom.Model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Account {
     private int account_id;
@@ -13,8 +14,12 @@ public class Account {
     private String address;
     private String phone;
     private Date dateofbirth;
+    private Timestamp createAt;
+    private String createBy;
+    private Timestamp updateAt;
+    private String updateBy;
 
-    public Account(int account_id, String email, String password, String name, String role, String status, String gender, String address, String phone, Date dateofbirth) {
+    public Account(int account_id, String email, String password, String name, String role, String status, String gender, String address, String phone, Date dateofbirth, Timestamp createAt, String createBy, Timestamp updateAt, String updateBy) {
         this.account_id = account_id;
         this.email = email;
         this.password = password;
@@ -25,6 +30,10 @@ public class Account {
         this.address = address;
         this.phone = phone;
         this.dateofbirth = dateofbirth;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
     }
 
     public Account() {
@@ -108,5 +117,37 @@ public class Account {
 
     public void setDateofbirth(Date dateofbirth) {
         this.dateofbirth = dateofbirth;
+    }
+
+    public Timestamp getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public Timestamp getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Timestamp updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
     }
 }
