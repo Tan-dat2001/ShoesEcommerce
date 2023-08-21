@@ -2,6 +2,7 @@ package com.shoesecom.Service.ImpService;
 
 import com.shoesecom.DAO.IAccountDAO;
 import com.shoesecom.Model.Account;
+import com.shoesecom.Model.Register;
 import com.shoesecom.Service.IAccountService;
 
 import javax.inject.Inject;
@@ -17,5 +18,16 @@ public class AccountService implements IAccountService {
     @Override
     public Account getAccountByEmail(String email) {
         return accountDAO.getAccountByEmail(email);
+    }
+
+    @Override
+    public void sendEmail(Register register) {
+        accountDAO.sendEmail(register);
+    }
+
+    @Override
+    public void createAccount(Register register) {
+        accountDAO.crateAccount(register);
+
     }
 }
