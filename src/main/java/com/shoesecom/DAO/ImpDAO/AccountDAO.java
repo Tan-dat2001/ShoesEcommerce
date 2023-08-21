@@ -1,13 +1,26 @@
 package com.shoesecom.DAO.ImpDAO;
 
 import com.shoesecom.DAO.IAccountDAO;
-import com.shoesecom.DBConnect;
+import com.shoesecom.DbConnect.DBConnect;
 import com.shoesecom.Model.Account;
+import com.shoesecom.Model.Register;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Message.RecipientType;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class AccountDAO implements IAccountDAO {
     Statement statement = null;
@@ -53,7 +66,7 @@ public class AccountDAO implements IAccountDAO {
             ps.setString(1,email);
             rs = ps.executeQuery();
             while (rs.next()){
-                Account acc = new Account(
+                return new Account(
                         rs.getInt("account_id"),
                         rs.getString("email"),
                         rs.getString("password"),
@@ -63,20 +76,80 @@ public class AccountDAO implements IAccountDAO {
                         rs.getString("gender"),
                         rs.getString("address"),
                         rs.getString("phone"),
-                        rs.getDate("dateofbirth"));
-                return acc;
-
+                        rs.getDate("dateofbirth"),
+                        rs.getTimestamp("create_at"),
+                        rs.getString("create_by"),
+                        rs.getTimestamp("update_at"),
+                        rs.getString("update_by"));
             }
         }catch (SQLException e){
+            return null;
+        }
+        return null;
+    }
 
+    @Override
+    public void crateAccount(Register register) {
+        String sql = "INSERT INTO `account`( `email`, `password`, `name`, `gender`, `address`, `phone`, `dateofbirth`) " +
+                "VALUES " +
+                "(?,?,?,?,?,?,?)";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setString(1,register.getEmail());
+            ps.setString(2,register.getPassword());
+            ps.setString(3,register.getName());
+            ps.setString(4,register.getGender());
+            ps.setString(5,register.getAddress());
+            ps.setString(6,register.getPhone());
+            ps.setDate(7,register.getDateofbirth());
+
+
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
         }
 
-        return null;
+    }
+
+    @Override
+    public void sendEmail(Register register) {
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+        props.put("mail.smtp.port", "587"); //TLS Port
+        props.put("mail.smtp.auth", "true"); //enable authentication
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.name", "Karma");
+        String subject = " Code OTP Register shop karma";
+        String text="<h1>Mã code nhập để xác nhận đăng ký \n"+register.getCode()+"</h1>";
+        String account = "thuyhien15082002@gmail.com";
+        String pass = "tuciuneysyypbuim";
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(account,pass);
+            }
+        });
+        try{
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(account));
+            message.setRecipient(RecipientType.TO, new InternetAddress(register.getEmail()));
+            message.setHeader("Content-type","text/html;charset=UTF-8");
+            message.setSubject(subject);
+            message.setContent(text,"text/html;charset=UTF-8");
+            Transport.send(message);
+
+        }catch (MessagingException e){
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     public static void main(String[] args) {
         AccountDAO acc = new AccountDAO();
-        acc.checkLogin("hien@gmail.com","123");
+        acc.checkLogin("user@gmail.com","user");
 
 
     }

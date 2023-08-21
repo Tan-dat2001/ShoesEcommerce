@@ -1,6 +1,10 @@
+<%@ page import="com.shoesecom.Model.Account" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Start Header Area -->
+<%
+    Account account = (Account) session.getAttribute("account");
+%>
 <header class="header_area sticky-header">
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light main_box">
@@ -16,7 +20,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item "><a class="nav-link" href="index.html">Trang chủ</a></li>
+                        <li class="nav-item "><a class="nav-link" href="web-home">Trang chủ</a></li>
                         <li class="nav-item submenu dropdown">
                             <a class="nav-link" href="category.html">Sản phẩm</a>
                             <!-- <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -42,9 +46,13 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                aria-expanded="false">Tài khoản</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item nav-boxshadow"><a class="nav-link" href="login">Đăng nhập</a></li>
-                                <!-- <li class="nav-item"><a class="nav-link" href="">Hồ sơ</a></li>
-                                <li class="nav-item"><a class="nav-link" href="">Đăng xuất</a></li> -->
+                                <c:if test="${not empty account}">
+                                    <li class="nav-item"><a class="nav-link" href="">Hồ sơ</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="log-out">Đăng xuất</a></li>
+                                </c:if>
+                                <c:if test="${empty account}">
+                                    <li class="nav-item nav-boxshadow"><a class="nav-link" href="login">Đăng nhập</a></li>
+                                </c:if>
                             </ul>
                         </li>
                         <!-- <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> -->

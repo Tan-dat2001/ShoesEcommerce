@@ -23,7 +23,7 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.setCharacterEncoding("utf-8");
         request.setCharacterEncoding("utf-8");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -32,32 +32,30 @@ public class LoginController extends HttpServlet {
         boolean isValid = accountService.checkLogin(email,password);
         if(isValid){
             Account account = accountService.getAccountByEmail(email);
-            session.setAttribute("account",account);
-            session.setAttribute("email", email);
-            session.setAttribute("name", account.getName());
-            session.setAttribute("account_id", account.getAccount_id());
-            if (account.getRole() == "admin"){
-                Account admin = accountService.getAccountByEmail(email);
-                session.setAttribute("admin",admin);
-
+//            session.setAttribute("account",account);
+//            session.setAttribute("email", email);
+//            session.setAttribute("name", account.getName());
+//            session.setAttribute("account_id", account.getAccount_id());
+            if (account.getRole().equals("admin")){
+//                Account admin = accountService.getAccountByEmail(email);
+                session.setAttribute("account",account);
                 RequestDispatcher rd = request.getRequestDispatcher("/views/admin/admin.jsp");
                 rd.forward(request,response);
                 response.sendRedirect("admin-home");
 
-            }else if (account.getRole() == "user"){
+            }else if (account.getRole().equals("user")){
+                session.setAttribute("account", account);
                 RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
                 rd.forward(request,response);
                 response.sendRedirect("web-home");
-
             }
             else {
                 RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
                 rd.forward(request,response);
             }
-
         }
         else {
-            session.setAttribute("errorMessage", "Đăng nhập thất bại! <br> Vui lòng kiểm tra lại email và mật khẩu.");
+            request.setAttribute("errorMessage", "Đăng nhập thất bại! <br> Vui lòng kiểm tra lại email và mật khẩu.");
             response.sendRedirect("login");
         }
 

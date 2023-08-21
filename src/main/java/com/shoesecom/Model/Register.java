@@ -3,7 +3,7 @@ package com.shoesecom.Model;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class Account {
+public class Register {
     private int account_id;
     private String email;
     private String password;
@@ -14,12 +14,9 @@ public class Account {
     private String address;
     private String phone;
     private Date dateofbirth;
-    private Timestamp createAt;
-    private String createBy;
-    private Timestamp updateAt;
-    private String updateBy;
+    private int code;
 
-    public Account(int account_id, String email, String password, String name, String role, String status, String gender, String address, String phone, Date dateofbirth, Timestamp createAt, String createBy, Timestamp updateAt, String updateBy) {
+    public Register(int account_id, String email, String password, String name, String role, String status, String gender, String address, String phone, Date dateofbirth, int code) {
         this.account_id = account_id;
         this.email = email;
         this.password = password;
@@ -30,13 +27,11 @@ public class Account {
         this.address = address;
         this.phone = phone;
         this.dateofbirth = dateofbirth;
-        this.createAt = createAt;
-        this.createBy = createBy;
-        this.updateAt = updateAt;
-        this.updateBy = updateBy;
+        this.code = code;
     }
 
-    public Account() {
+
+    public Register() {
     }
 
     public int getAccount_id() {
@@ -119,35 +114,11 @@ public class Account {
         this.dateofbirth = dateofbirth;
     }
 
-    public Timestamp getCreateAt() {
-        return createAt;
+    public int getCode() {
+        return code;
     }
 
-    public void setCreateAt(Timestamp createAt) {
-        this.createAt = createAt;
-    }
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public Timestamp getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Timestamp updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
+    public void setCode(int code) {
+        this.code = code;
     }
 }

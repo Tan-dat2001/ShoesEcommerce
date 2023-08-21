@@ -1,4 +1,4 @@
-package com.shoesecom;
+package com.shoesecom.DbConnect;
 
 
 import java.sql.*;
