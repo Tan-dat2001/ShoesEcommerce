@@ -147,6 +147,69 @@ public class AccountDAO implements IAccountDAO {
 
     }
 
+    @Override
+    public List<Account> getAll() {
+        List<Account> accountList = new ArrayList<>();
+        String sql = "select * from account";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                accountList.add(new Account(rs.getInt("account_id"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("name"),
+                        rs.getString("role"),
+                        rs.getString("status"),
+                        rs.getString("gender"),
+                        rs.getString("address"),
+                        rs.getString("phone"),
+                        rs.getDate("dateofbirth"),
+                        rs.getTimestamp("create_at"),
+                        rs.getString("create_by"),
+                        rs.getTimestamp("update_at"),
+                        rs.getString("update_by")));
+            }
+            return accountList;
+        }catch (SQLException e){
+            return null;
+        }
+
+    }
+
+    @Override
+    public List<Account> getAccountbyID(int account_id) {
+        List<Account> accountList = new ArrayList<>();
+        String sql = "SELECT * FROM `account` WHERE account_id = ?;\n";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setInt(1, account_id);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                 accountList.add(new Account(rs.getInt("account_id"),
+                         rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("name"),
+                        rs.getString("role"),
+                        rs.getString("status"),
+                        rs.getString("gender"),
+                        rs.getString("address"),
+                        rs.getString("phone"),
+                        rs.getDate("dateofbirth"),
+                        rs.getTimestamp("create_at"),
+                        rs.getString("create_by"),
+                        rs.getTimestamp("update_at"),
+                        rs.getString("update_by")));
+            }
+            return accountList;
+        }catch (SQLException e){
+            return null;
+        }
+
+    }
+
     public static void main(String[] args) {
         AccountDAO acc = new AccountDAO();
         acc.checkLogin("user@gmail.com","user");

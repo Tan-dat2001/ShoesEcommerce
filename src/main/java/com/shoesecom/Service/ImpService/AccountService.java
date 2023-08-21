@@ -6,6 +6,7 @@ import com.shoesecom.Model.Register;
 import com.shoesecom.Service.IAccountService;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class AccountService implements IAccountService {
     @Inject
@@ -29,5 +30,15 @@ public class AccountService implements IAccountService {
     public void createAccount(Register register) {
         accountDAO.crateAccount(register);
 
+    }
+
+    @Override
+    public List<Account> getAll() {
+        return accountDAO.getAll();
+    }
+
+    @Override
+    public List<Account> getAccountbyID(int account_id) {
+        return accountDAO.getAccountbyID(account_id);
     }
 }
