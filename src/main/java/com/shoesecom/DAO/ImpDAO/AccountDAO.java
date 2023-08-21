@@ -53,7 +53,7 @@ public class AccountDAO implements IAccountDAO {
             ps.setString(1,email);
             rs = ps.executeQuery();
             while (rs.next()){
-                Account acc = new Account(
+                return new Account(
                         rs.getInt("account_id"),
                         rs.getString("email"),
                         rs.getString("password"),
@@ -63,14 +63,15 @@ public class AccountDAO implements IAccountDAO {
                         rs.getString("gender"),
                         rs.getString("address"),
                         rs.getString("phone"),
-                        rs.getDate("dateofbirth"));
-                return acc;
-
+                        rs.getDate("dateofbirth"),
+                        rs.getTimestamp("create_at"),
+                        rs.getString("create_by"),
+                        rs.getTimestamp("update_at"),
+                        rs.getString("update_by"));
             }
         }catch (SQLException e){
-
+            return null;
         }
-
         return null;
     }
 
