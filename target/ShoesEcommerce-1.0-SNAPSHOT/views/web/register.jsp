@@ -39,28 +39,28 @@
                     <h3>Đăng ký</h3>
                     <form class="row login_form" action="register" method="post" id="contactForm" novalidate="novalidate">
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email"  required>
 
                         </div>
                         <div class="col-md-12 form-group">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mật khẩu'">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu"  required>
                         </div>
 
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Họ Tên" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Họ Tên'">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Họ Tên" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Họ Tên'" required>
                         </div>
                         <div class="col-md-12 form-group">
                             <input type="text" class="form-control" id="gender" name="gender" placeholder="Giới tính" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Giới tính'">
                         </div>
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Địa chỉ'">
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Địa chỉ'" required>
                         </div>
 
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="SĐT" onfocus="this.placeholder = ''" onblur="this.placeholder = 'SĐT'">
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="SĐT" onfocus="this.placeholder = ''" onblur="this.placeholder = 'SĐT'" required>
                         </div>
                         <div class="col-md-12 form-group">
-                            <input type="Date" class="form-control" id="date" name="date" placeholder="Sinh nhật">
+                            <input type="Date" class="form-control" id="date" name="date" placeholder="Sinh nhật" required>
                         </div>
                         <div class="col-md-12 form-group">
                             <p class="error-message">${errorMessage}</p>
