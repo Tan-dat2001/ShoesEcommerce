@@ -212,7 +212,7 @@ public class AccountDAO implements IAccountDAO {
 
     public static void main(String[] args) {
         AccountDAO acc = new AccountDAO();
-        acc.checkLogin("user@gmail.com","user");
+        acc.getAll();
 
 
     }
