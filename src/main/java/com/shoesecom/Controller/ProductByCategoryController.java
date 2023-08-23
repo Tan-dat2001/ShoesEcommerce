@@ -1,6 +1,5 @@
 package com.shoesecom.Controller;
 
-import com.shoesecom.DAO.ImpDAO.ProductDAO;
 import com.shoesecom.Model.Category;
 import com.shoesecom.Model.Product;
 import com.shoesecom.Service.ICategoryService;
@@ -13,26 +12,26 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "CategoryController", value = "/web-category")
-public class CategoryController extends HttpServlet {
-    @Inject
-    private ICategoryService categoryService;
+@WebServlet(name = "ProductByCategoryController", value = "/product-category")
+public class ProductByCategoryController extends HttpServlet {
     @Inject
     private IProductService productService;
+    @Inject
+    private ICategoryService categoryService;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        List<Product> p = productService.getProductByCategory(categoryId);
+        request.setAttribute("product",p);
+
         List<Category> category = categoryService.getAllCategory();
         request.setAttribute("category",category);
 
-        List<Product> p1 = productService.getAllProduct();
-        request.setAttribute("product",p1);
-
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/category-product.jsp");
         rd.forward(request,response);
-
-
     }
 
     @Override

@@ -20,4 +20,12 @@ public class ProductService implements IProductService {
     public Product getProductById(int id) {
         return productDAO.getProductById(id);
     }
+    @Override
+    public List<Product> getProductByCategory(int category_id) {
+        return productDAO.getProductByCategory(category_id);
+    }
+    @Override
+    public int countProduct() {
+        return productDAO.countProduct();
+    }
 }
