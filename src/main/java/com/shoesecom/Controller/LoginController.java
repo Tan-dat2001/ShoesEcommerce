@@ -56,7 +56,9 @@ public class LoginController extends HttpServlet {
         }
         else {
             request.setAttribute("errorMessage", "Đăng nhập thất bại! <br> Vui lòng kiểm tra lại email và mật khẩu.");
-            response.sendRedirect("login");
+//            response.sendRedirect("login");
+            RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
+            rd.forward(request,response);
         }
 
 

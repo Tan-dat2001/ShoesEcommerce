@@ -23,9 +23,6 @@ public class CategoryController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-
-
-
         List<Category> category = categoryService.getAllCategory();
         request.setAttribute("category",category);
 
