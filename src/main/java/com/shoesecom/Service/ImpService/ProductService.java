@@ -15,4 +15,14 @@ public class ProductService implements IProductService {
     public List<Product> getAllProduct() {
         return productDAO.getAllProduct();
     }
+
+    @Override
+    public List<Product> getProductByCategory(int category_id) {
+        return productDAO.getProductByCategory(category_id);
+    }
+
+    @Override
+    public int countProduct() {
+        return productDAO.countProduct();
+    }
 }
