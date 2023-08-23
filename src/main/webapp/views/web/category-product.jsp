@@ -33,11 +33,7 @@
                 <ul class="main-categories">
                     <c:forEach items="${category}" var="c">
                         <li class="main-nav-list">
-                            <a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable">
-                                <span class="lnr lnr-arrow-right"></span>
-                                    ${c.category_name}
-                                <span class="number">(53)</span>
-                            </a>
+                            <a href="product-category?categoryId=${c.category_id}">${c.category_name}</a>
                         </li>
                     </c:forEach>
                 </ul>
@@ -106,11 +102,11 @@
                 </div>
                 <div class="pagination">
                     <a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-                    <a href="#">6</a>
+                    <c:forEach begin="1" end="${endP}" var="i">
+                        <a href="" class="active">${i}</a>
+                    </c:forEach>
+
+
                     <a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
@@ -119,7 +115,11 @@
             <section class="lattest-product-area pb-40 category-list">
                 <div class="row">
                     <!-- single product -->
+
                     <c:forEach items="${product}" var="p">
+
+
+
                     <div class="col-lg-4 col-md-6">
                         <div class="single-product">
                             <img class="img-fluid" src="${p.product_image}" alt="">
@@ -133,7 +133,7 @@
 
                                     <a href="" class="social-info">
                                         <span class="ti-bag"></span>
-                                        <p class="hover-text">Lưu</p>
+                                        <p class="hover-text">Thêm vào giỏ</p>
                                     </a>
                                     <a href="" class="social-info">
                                         <span class="lnr lnr-move"></span>
@@ -144,6 +144,7 @@
                         </div>
                     </div>
                     </c:forEach>
+
 
                 </div>
             </section>

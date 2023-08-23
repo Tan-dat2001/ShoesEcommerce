@@ -8,4 +8,6 @@ import java.util.List;
 public interface IProductService {
 
     List<Product> getAllProduct();
+    List<Product> getProductByCategory(int category_id);
+    int countProduct();
 }
