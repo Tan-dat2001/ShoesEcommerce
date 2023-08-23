@@ -39,20 +39,45 @@ public class ProductDAO implements IProductDAO {
                         rs.getString("create_by"),
                         rs.getTimestamp("update_at"),
                         rs.getString("update_by")));
-
-
             }
-
-
         } catch (SQLException e) {
             return null;
         }
         return productList;
+    }
 
+    @Override
+    public Product getProductById(int id) {
+        String sql = "select * from product where product_id=?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return new Product(id,
+                        rs.getInt("category_id"),
+                        rs.getInt("discount_id"),
+                        rs.getInt("purchases"),
+                        rs.getInt("quantity"),
+                        rs.getString("product_name"),
+                        rs.getString("product_desc"),
+                        rs.getString("product_image"),
+                        rs.getString("status"),
+                        rs.getFloat("product_price"),
+                        rs.getTimestamp("create_at"),
+                        rs.getString("create_by"),
+                        rs.getTimestamp("update_at"),
+                        rs.getString("update_by"));
+            }
+        }catch (SQLException e){
+            return null;
+        }
+        return null;
     }
 
     public static void main(String[] args) {
-        System.out.println(new ProductDAO().getAllProduct());
-
+//        System.out.println(new ProductDAO().getAllProduct());
+        System.out.println(new ProductDAO().getProductById(1));
     }
 }

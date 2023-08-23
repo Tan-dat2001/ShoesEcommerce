@@ -59,7 +59,7 @@
                                 <h6>${p.product_name}</h6>
                                 <div class="price">
                                     <h6>${p.product_price} đ</h6>
-                                    <h6 class="l-through">${p.product_price} đ</h6>
+                                    <h6 class="l-through">${p.product_price*1.2} đ</h6>
                                 </div>
                                 <div class="prd-bottom">
 
@@ -67,14 +67,13 @@
                                         <span class="ti-bag"></span>
                                         <p class="hover-text">Thêm vào giỏ</p>
                                     </a>
-                                    <a href="" class="social-info">
+                                    <a href="product-detail?productId=${p.product_id}" class="social-info">
                                         <span class="lnr lnr-move"></span>
                                         <p class="hover-text">Xem chi tiết</p>
                                     </a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </c:forEach>
 
