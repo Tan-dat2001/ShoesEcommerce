@@ -11,4 +11,6 @@ public interface IProductService {
     Product getProductById(int id);
     List<Product> getProductByCategory(int category_id);
     int countProduct();
+    List<Product> searchProduct(String keyword);
+
 }

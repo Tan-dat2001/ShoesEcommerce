@@ -50,11 +50,11 @@
             </div>
             <div class="row">
                 <!-- single product -->
-                <c:forEach items="${product}" var="p">
-                    <div class="col-lg-3 col-md-6">
+                <c:forEach items="${listProducts}" var="p">
+                    <div class="col-lg-4 col-md-6">
 
                         <div class="single-product">
-                            <img class="img-fluid" src="${p.product_image}" alt="">
+                            <img class="img-fluid single-product-image" src="${p.product_image}" alt="">
                             <div class="product-details">
                                 <h6>${p.product_name}</h6>
                                 <div class="price">
@@ -83,5 +83,14 @@
 
 </section>
 <!-- end product Area -->
+
+<nav aria-label="Page navigation example"
+     style="display: flex; justify-content: center; margin-bottom: 30px;">
+    <ul class="pagination ">
+        <c:forEach var="i" begin="1" end="${endPage}">
+            <li class="page-item"><a class="page-link ${index == i ? 'active-pagination':''}" href="web-home?index=${i}">${i}</a></li>
+        </c:forEach>
+    </ul>
+</nav>
 </body>
 </html>

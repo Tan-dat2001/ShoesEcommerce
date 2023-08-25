@@ -28,4 +28,9 @@ public class ProductService implements IProductService {
     public int countProduct() {
         return productDAO.countProduct();
     }
+
+    @Override
+    public List<Product> searchProduct(String keyword) {
+        return productDAO.searchProduct(keyword);
+    }
 }

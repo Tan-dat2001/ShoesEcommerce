@@ -3,6 +3,7 @@ package com.shoesecom.Controller;
 import com.shoesecom.Model.Category;
 import com.shoesecom.Model.Product;
 import com.shoesecom.Service.ICategoryService;
+import com.shoesecom.Service.IImageService;
 import com.shoesecom.Service.IProductService;
 
 import javax.inject.Inject;

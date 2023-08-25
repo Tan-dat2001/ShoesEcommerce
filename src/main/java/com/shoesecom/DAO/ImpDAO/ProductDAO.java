@@ -15,10 +15,11 @@ public class ProductDAO implements IProductDAO {
     Statement statement = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+
     @Override
     public List<Product> getAllProduct() {
         List<Product> productList = new ArrayList<>();
-        String sql ="SELECT * FROM product";
+        String sql ="SELECT * FROM product order by product_id desc";
 
         try {
             statement = DBConnect.getInstall().get();
@@ -127,11 +128,77 @@ public class ProductDAO implements IProductDAO {
         return 0;
     }
 
+    @Override
+    public List<Product> pagingProduct(int index) {
+        List<Product> results = new ArrayList<>();
+        String sql = " SELECT * FROM product ORDER BY product_id desc LIMIT 18 OFFSET ? ";
+        //litmit 18 chỉ định 18 sản phẩm được hiển thị
+        //offset ? chỉ định bắt đầu từ hàng(row) thứ mấy
+        try {
+           statement = DBConnect.getInstall().get();
+           ps = statement.getConnection().prepareStatement(sql);
+           ps.setInt(1, (index-1)*18);
+           rs = ps.executeQuery();
+           while(rs.next()){
+                results.add(new Product(
+                       rs.getInt("product_id"),
+                       rs.getInt("category_id"),
+                       rs.getInt("discount_id"),
+                       rs.getInt("purchases"),
+                       rs.getInt("quantity"),
+                       rs.getString("product_name"),
+                       rs.getString("product_desc"),
+                       rs.getString("product_image"),
+                       rs.getString("status"),
+                       rs.getFloat("product_price"),
+                       rs.getTimestamp("create_at"),
+                       rs.getString("create_by"),
+                       rs.getTimestamp("update_at"),
+                       rs.getString("update_by")));
+           }
+        }catch (SQLException e){
+            return null;
+        }
+        return results;
+    }
+
+    @Override
+    public List<Product> searchProduct(String keyword) {
+        List<Product> results = new ArrayList<>();
+        String sql = "select * from product where product_name like ?";
+        try {
+             statement = DBConnect.getInstall().get();
+             ps = statement.getConnection().prepareStatement(sql);
+             ps.setString(1,"%" + keyword + "%");
+             rs = ps.executeQuery();
+             while(rs.next()){
+                 results.add(new Product(
+                         rs.getInt("product_id"),
+                         rs.getInt("category_id"),
+                         rs.getInt("discount_id"),
+                         rs.getInt("purchases"),
+                         rs.getInt("quantity"),
+                         rs.getString("product_name"),
+                         rs.getString("product_desc"),
+                         rs.getString("product_image"),
+                         rs.getString("status"),
+                         rs.getFloat("product_price"),
+                         rs.getTimestamp("create_at"),
+                         rs.getString("create_by"),
+                         rs.getTimestamp("update_at"),
+                         rs.getString("update_by")));
+             }
+        }catch (SQLException e ){
+            return null;
+        }
+        return results;
+    }
+
+
     public static void main(String[] args) {
 //        System.out.println(new ProductDAO().getAllProduct());
-        System.out.println(new ProductDAO().getProductById(1));
-
-        System.out.println(new ProductDAO().countProduct());
+//        System.out.println(new ProductDAO().getProductById(1));
+        System.out.println(new ProductDAO().searchProduct("Jordan"));
 
     }
 }

@@ -35,7 +35,7 @@ public class ProductDetailController extends HttpServlet {
         request.setAttribute("productPrice",formattedPrice);
         List<Size> listSize = sizeService.getAllSize();
         request.setAttribute("listSize",listSize);
-        Image image = imageService.getImageById(productId);
+        Image image = imageService.getImageByProductId(productId);
         request.setAttribute("image",image);
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/product-detail.jsp");
         rd.forward(request,response);
