@@ -89,9 +89,9 @@
     </div>
     <div class="search_input" id="search_input_box">
         <div class="container">
-            <form class="d-flex justify-content-between">
-                <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                <button type="submit" class="btn"></button>
+            <form action="web-home" method="post" class="d-flex justify-content-between">
+                <button type="submit" class="search search-navbar-custom"><span class="lnr lnr-magnifier" id=""></span></button>
+                <input type="text" class="form-control" id="search_input" name="keyword-searching" placeholder="Tìm kiếm sản phẩm ở đây.....">
                 <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
             </form>
         </div>

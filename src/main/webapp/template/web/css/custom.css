@@ -48,3 +48,16 @@
 .single-product .product-details .prd-bottom .social-info:hover{
     width: 140px;
 }
+
+.single-product .single-product-image{
+   height: 320px;
+}
+
+.search-navbar-custom{
+    border: none;
+    cursor: pointer;
+    background: content-box;
+    color: #fff;
+    font-size: 16px;
+    padding: 0 16px;
+}

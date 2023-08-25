@@ -55,6 +55,6 @@ public class ImageDAO implements IImageDAO {
 
     public static void main(String[] args) {
 //        System.out.println(new ImageDAO().getImageById(1));
-        System.out.println(new ImageDAO().getImageByProductId(1));
+        System.out.println(new ImageDAO().getImageByProductId(8));
     }
 }

@@ -9,5 +9,6 @@ public interface IProductDAO {
     Product getProductById(int id);
     List<Product> getProductByCategory(int category_id);
     int countProduct();
-
+    List<Product> pagingProduct(int index);
+    List<Product> searchProduct(String keyword);
 }
