@@ -250,34 +250,49 @@ $(document).ready(function(){
 
         if(document.getElementById("price-range")){
         
-        var nonLinearSlider = document.getElementById('price-range');
-        
-        noUiSlider.create(nonLinearSlider, {
-            connect: true,
-            behaviour: 'tap',
-            start: [ 500, 4000 ],
-            range: {
-                // Starting at 500, step the value by 500,
-                // until 4000 is reached. From there, step by 1000.
-                'min': [ 0 ],
-                '10%': [ 500, 500 ],
-                '50%': [ 4000, 1000 ],
-                'max': [ 10000 ]
+            var nonLinearSlider = document.getElementById('price-range');
+
+            noUiSlider.create(nonLinearSlider, {
+                connect: true,
+                behaviour: 'tap',
+                start: [ 0, 300000 ],
+                range: {
+                    // Starting at 500, step the value by 500,
+                    // until 4000 is reached. From there, step by 1000.
+                    'min': [ 0 ],
+                    'max': [ 5000000 ]
+                }
+            });
+
+
+            var nodes = [
+                document.getElementById('lower-value'), // 0
+                document.getElementById('upper-value')  // 1
+            ];
+            function formatCurrency(amount) {
+                return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
             }
-        });
+            // Display the slider value and how far the handle moved
+            // from the left edge of the slider.
+            // nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
+            //     nodes[handle].innerHTML = formatCurrency(values[handle]);
+            // });
+            // nonLinearSlider.noUiSlider.on('update', function (values) {
+            //     document.getElementById('lower-value').innerText = values[0];
+            //     document.getElementById('upper-value').innerText = values[1];
+            // });
+            nonLinearSlider.noUiSlider.on('update', function (values) {
+                var lowerValueElement = document.getElementById('lower-value');
+                var upperValueElement = document.getElementById('upper-value');
+                var lowerValueInput = document.getElementById('lower-value-input');
+                var upperValueInput = document.getElementById('upper-value-input');
 
+                lowerValueElement.innerText = formatCurrency(values[0]);
+                upperValueElement.innerText = formatCurrency(values[1]);
 
-        var nodes = [
-            document.getElementById('lower-value'), // 0
-            document.getElementById('upper-value')  // 1
-        ];
-
-        // Display the slider value and how far the handle moved
-        // from the left edge of the slider.
-        nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
-            nodes[handle].innerHTML = values[handle];
-        });
-
+                lowerValueInput.value = values[0];
+                upperValueInput.value = values[1];
+            });
         }
 
     });

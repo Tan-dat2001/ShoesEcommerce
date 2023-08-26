@@ -194,11 +194,46 @@ public class ProductDAO implements IProductDAO {
         return results;
     }
 
+    @Override
+    public List<Product> getProductByPrice(float minPrice, float maxPrice) {
+        List<Product> results = new ArrayList<>();
+        String sql = "select * from product where product_price >= ? and product_price <= ?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setFloat(1, minPrice);
+            ps.setFloat(2, maxPrice);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                 results.add(new Product(
+                        rs.getInt("product_id"),
+                        rs.getInt("category_id"),
+                        rs.getInt("discount_id"),
+                        rs.getInt("purchases"),
+                        rs.getInt("quantity"),
+                        rs.getString("product_name"),
+                        rs.getString("product_desc"),
+                        rs.getString("product_image"),
+                        rs.getString("status"),
+                        rs.getFloat("product_price"),
+                        rs.getTimestamp("create_at"),
+                        rs.getString("create_by"),
+                        rs.getTimestamp("update_at"),
+                        rs.getString("update_by")));
+            }
+        }catch (SQLException e){
+            return null;
+        }
+        return results;
+    }
+
 
     public static void main(String[] args) {
 //        System.out.println(new ProductDAO().getAllProduct());
 //        System.out.println(new ProductDAO().getProductById(1));
-        System.out.println(new ProductDAO().searchProduct("Jordan"));
+//        System.out.println(new ProductDAO().searchProduct("Jordan"));
+
+        System.out.println(new ProductDAO().getProductByPrice(2000000,3000000));
 
     }
 }

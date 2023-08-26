@@ -160,6 +160,6 @@ public class Product {
                 ", create_by='" + create_by + '\'' +
                 ", update_at=" + update_at +
                 ", update_by='" + update_by + '\'' +
-                '}';
+                '}' + "\n";
     }
 }
