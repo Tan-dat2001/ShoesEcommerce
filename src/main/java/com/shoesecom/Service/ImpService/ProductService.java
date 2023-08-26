@@ -33,4 +33,9 @@ public class ProductService implements IProductService {
     public List<Product> searchProduct(String keyword) {
         return productDAO.searchProduct(keyword);
     }
+
+    @Override
+    public List<Product> getProductByPrice(float minPrice, float maxPrice) {
+        return productDAO.getProductByPrice(minPrice,maxPrice);
+    }
 }

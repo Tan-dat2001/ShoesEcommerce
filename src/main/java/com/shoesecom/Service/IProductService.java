@@ -12,5 +12,6 @@ public interface IProductService {
     List<Product> getProductByCategory(int category_id);
     int countProduct();
     List<Product> searchProduct(String keyword);
+    List<Product> getProductByPrice(float minPrice, float maxPrice);
 
 }

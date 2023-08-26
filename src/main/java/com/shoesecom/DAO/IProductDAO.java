@@ -11,4 +11,5 @@ public interface IProductDAO {
     int countProduct();
     List<Product> pagingProduct(int index);
     List<Product> searchProduct(String keyword);
+    List<Product> getProductByPrice(float minPrice, float maxPrice);
 }

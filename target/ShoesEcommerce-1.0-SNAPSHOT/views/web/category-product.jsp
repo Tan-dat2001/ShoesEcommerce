@@ -24,7 +24,7 @@
     </div>
 </section>
 <!-- End Banner Area -->
-<div class="container">
+<div class="container" style="padding: 0">
     <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
             <div class="sidebar-categories">
@@ -39,8 +39,8 @@
                 </ul>
 
             </div>
-<%--            <div class="sidebar-filter mt-50">--%>
-<%--                <div class="top-filter-head">Product Filters</div>--%>
+            <div class="sidebar-filter mt-50">
+                <div class="top-filter-head">Product Filters</div>
 <%--                <div class="common-filter">--%>
 <%--                    <div class="head">Brands</div>--%>
 <%--                    <form action="#">--%>
@@ -67,21 +67,27 @@
 <%--                        </ul>--%>
 <%--                    </form>--%>
 <%--                </div>--%>
-<%--                <div class="common-filter">--%>
-<%--                    <div class="head">Price</div>--%>
-<%--                    <div class="price-range-area">--%>
-<%--                        <div id="price-range"></div>--%>
-<%--                        <div class="value-wrapper d-flex">--%>
-<%--                            <div class="price">Price:</div>--%>
-<%--                            <span>$</span>--%>
-<%--                            <div id="lower-value"></div>--%>
-<%--                            <div class="to">to</div>--%>
-<%--                            <span>$</span>--%>
-<%--                            <div id="upper-value"></div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
+                <div class="common-filter">
+                    <div class="head">Price</div>
+
+                    <form id="price-form" action="product-rangePrice" method="post">
+                        <div class="price-range-area">
+                            <div id="price-range"></div>
+                            <div class="value-wrapper d-flex">
+                                <div class="price">Price:</div>
+                                <div id="lower-value" name="lowerValue"></div>
+                                <input type="hidden" id="lower-value-input" name="lowerValue">
+                                <div class="to">to</div>
+                                <div id="upper-value" name="upperValue"></div>
+                                <input type="hidden" id="upper-value-input" name="upperValue">
+                            </div>
+
+                            <input type="submit" value="Chọn">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
             <!-- Start Filter Bar -->
@@ -122,7 +128,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="${p.product_image}" alt="">
+                            <img class="img-fluid" style="height: 320px;" src="${p.product_image}" alt="">
                             <div class="product-details">
                                 <h6>${p.product_name}</h6>
                                 <div class="price">
@@ -144,8 +150,6 @@
                         </div>
                     </div>
                     </c:forEach>
-
-
                 </div>
             </section>
             <!-- End Best Seller -->
@@ -153,24 +157,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-<script src="js/vendor/jquery-2.2.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/jquery.ajaxchimp.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery.sticky.js"></script>
-<script src="js/nouislider.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<!--gmaps Js-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-<script src="js/gmaps.min.js"></script>
-<script src="js/main.js"></script>
 </body>
 
 </html>
