@@ -61,3 +61,26 @@
     font-size: 16px;
     padding: 0 16px;
 }
+
+.quantity-navbar-custom{
+    position: absolute;
+    top: -40px;
+}
+
+.cart-navbar-custom{
+    position: relative;
+}
+
+.sub-total {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 32px 0;
+}
+
+.proceed-custom{
+    justify-content: space-between;
+}
+
+.cart_area .container .cart_inner .table-responsive .table tbody tr:last-child{
+    border-bottom: 1px solid #dee2e6;
+}
