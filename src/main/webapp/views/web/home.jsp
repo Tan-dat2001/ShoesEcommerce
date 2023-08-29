@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="prd-bottom">
 
-                                    <a href="" class="social-info">
+                                    <a href="addtocart?productId=${p.product_id}&quantity=1" class="social-info">
                                         <span class="ti-bag"></span>
                                         <p class="hover-text">Thêm vào giỏ</p>
                                     </a>

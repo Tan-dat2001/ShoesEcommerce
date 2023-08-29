@@ -141,7 +141,7 @@
                                         <span class="ti-bag"></span>
                                         <p class="hover-text">Thêm vào giỏ</p>
                                     </a>
-                                    <a href="" class="social-info">
+                                    <a href="product-detail?productId=${p.product_id}" class="social-info">
                                         <span class="lnr lnr-move"></span>
                                         <p class="hover-text">Xem chi tiết</p>
                                     </a>
