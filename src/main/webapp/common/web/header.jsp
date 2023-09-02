@@ -60,7 +60,7 @@
                             </c:if>
                             <ul class="dropdown-menu">
                                 <c:if test="${not empty account}">
-                                    <li class="nav-item"><a class="nav-link" href="">Hồ sơ</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="web-profile">Hồ sơ</a></li>
                                     <li class="nav-item"><a class="nav-link" href="log-out">Đăng xuất</a></li>
                                 </c:if>
                                 <c:if test="${empty account}">
