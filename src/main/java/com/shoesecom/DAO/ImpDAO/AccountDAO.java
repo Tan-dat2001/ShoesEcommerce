@@ -22,7 +22,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class AccountDAO implements IAccountDAO {
+public class
+AccountDAO implements IAccountDAO {
     Statement statement = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -210,9 +211,49 @@ public class AccountDAO implements IAccountDAO {
 
     }
 
+    @Override
+    public void updateAccount(Account account) {
+        String sql = "UPDATE `account` SET " +
+                "`name`=?,`gender`=?,`address`=?,`phone`=?,`dateofbirth`= ?" +
+                " WHERE account_id =?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+
+            ps.setString(1, account.getName());
+            ps.setString(2, account.getGender());
+            ps.setString(3, account.getAddress());
+            ps.setString(4, account.getPhone());
+            ps.setDate(5,account.getDateofbirth());
+            ps.setInt(6, account.getAccount_id());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void updatePassword(Account account) {String sql = "UPDATE `account` SET " +
+            "`password`=?  WHERE account_id =?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+
+            ps.setString(1, account.getPassword());
+            ps.setInt(2, account.getAccount_id());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
+
     public static void main(String[] args) {
         AccountDAO acc = new AccountDAO();
-        acc.getAll();
+
+
 
 
     }

@@ -13,5 +13,9 @@ public interface IAccountDAO {
     void sendEmail(Register register);
     List<Account>getAll();
     List<Account>getAccountbyID(int account_id);
+    void updateAccount(Account account);
+    void updatePassword(Account account);
+
+
 
 }

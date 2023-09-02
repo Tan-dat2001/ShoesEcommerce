@@ -10,6 +10,8 @@ public interface IAccountService {
     Account getAccountByEmail(String email);
     void sendEmail(Register register);
     void createAccount(Register register);
+    void updateAccount(Account account);
+    void updatePassword(Account account);
     List<Account> getAll();
     List<Account>getAccountbyID(int account_id);
 }
