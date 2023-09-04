@@ -85,7 +85,7 @@
                         <label class="mb-2">Giới tính</label>
                         <input type="text" name="gender" class="form-control" value="<%=gender%>" >
                         </div>
-                        
+
                         <div class="mb-3">
                         <label class="mb-2">SĐT</label>
                         <input type="text" name="phone" class="form-control" value="<%=phone%>" >
