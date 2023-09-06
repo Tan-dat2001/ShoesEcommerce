@@ -23,7 +23,7 @@
                 </button>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav menu_nav ml-auto">
+                    <ul class="nav navbar-nav menu_nav ml-auto nav-custom">
                         <li class="nav-item "><a class="nav-link" href="web-home">Trang chủ</a></li>
                         <li class="nav-item submenu dropdown">
                             <a class="nav-link" href="web-category">Sản phẩm</a>

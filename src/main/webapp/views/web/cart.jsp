@@ -30,123 +30,58 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Total</th>
+                        <th scope="col">Sản phẩm</th>
+                        <th scope="col">Kích thước</th>
+                        <th scope="col">Giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Tổng tiền</th>
                     </tr>
                     </thead>
                     <tbody>
-<%--                    <c:forEach var="" items="" >--%>
 
-<%--                    </c:forEach>--%>
-                    <tr>
-                        <td>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="img/cart.jpg" alt="">
+                    <c:set var="o" value="${sessionScope.cart}" />
+                    <c:forEach var="i" items="${o.items}" >
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="${i.product.product_image}" alt="Ảnh giày" class="img-custom">
+                                    </div>
+                                    <div class="media-body">
+                                        <p>${i.product.product_name}</p>
+                                    </div>
                                 </div>
-                                <div class="media-body">
-                                    <p>Minimalistic shop for multipurpose use</p>
+                            </td>
+                            <td>
+                                <h5>${i.size}</h5>
+                            </td>
+                            <td>
+                                <h5>${i.product.product_price} đ</h5>
+                            </td>
+                            <td>
+                                <div class="product_count">
+                                    <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
+                                           class="input-text qty">
+                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                            class="increase items-count increase-custom" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                            class="reduced items-count reduced-custom" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <h5>$360.00</h5>
-                        </td>
-                        <td>
-                            <div class="product_count">
-                                <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                       class="input-text qty">
-                                <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                        class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                        class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                            </div>
-                        </td>
-                        <td>
-                            <h5>$720.00</h5>
-                        </td>
-                    </tr>
+                            </td>
+                            <td>
+                                <h5>${i.product.product_price*i.quantity} đ</h5>
+                            </td>
+                        </tr>
+                    </c:forEach>
 
-<%--                    <tr class="bottom_button">--%>
-<%--                        <td>--%>
-<%--                            <div class="cupon_text d-flex align-items-center">--%>
-<%--                                <input type="text" placeholder="Coupon Code">--%>
-<%--                                <a class="primary-btn" href="#">Áp mã</a>--%>
-<%--&lt;%&ndash;                                <a class="gray_btn" href="#">Close Coupon</a>&ndash;%&gt;--%>
-<%--                            </div>--%>
-<%--                        </td>--%>
-<%--                    </tr>--%>
-<%--                    <tr>--%>
-<%--                        <td>--%>
-
-<%--                        </td>--%>
-<%--                        <td>--%>
-
-<%--                        </td>--%>
-<%--                        <td>--%>
-<%--                            <h5>Tạm tính</h5>--%>
-<%--                        </td>--%>
-<%--                        <td>--%>
-<%--                            <h5>$2160.00</h5>--%>
-<%--                        </td>--%>
-<%--                    </tr>--%>
-<%--                    <tr class="shipping_area">--%>
-<%--                        <td>--%>
-
-<%--                        </td>--%>
-<%--                        <td>--%>
-
-<%--                        </td>--%>
-<%--                        <td>--%>
-<%--                            <h5>Shipping</h5>--%>
-<%--                        </td>--%>
-<%--                        <td>--%>
-<%--                            <div class="shipping_box">--%>
-<%--                                <ul class="list">--%>
-<%--                                    <li><a href="#">Flat Rate: $5.00</a></li>--%>
-<%--                                    <li><a href="#">Free Shipping</a></li>--%>
-<%--                                    <li><a href="#">Flat Rate: $10.00</a></li>--%>
-<%--                                    <li class="active"><a href="#">Local Delivery: $2.00</a></li>--%>
-<%--                                </ul>--%>
-<%--                                <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>--%>
-<%--                                <select class="shipping_select">--%>
-<%--                                    <option value="1">Bangladesh</option>--%>
-<%--                                    <option value="2">India</option>--%>
-<%--                                    <option value="4">Pakistan</option>--%>
-<%--                                </select>--%>
-<%--                                <select class="shipping_select">--%>
-<%--                                    <option value="1">Select a State</option>--%>
-<%--                                    <option value="2">Select a State</option>--%>
-<%--                                    <option value="4">Select a State</option>--%>
-<%--                                </select>--%>
-<%--                                <input type="text" placeholder="Postcode/Zipcode">--%>
-<%--                                <a class="gray_btn" href="#">Update Details</a>--%>
-<%--                            </div>--%>
-<%--                        </td>--%>
-<%--                    </tr>--%>
-<%--                    <tr class="out_button_area">--%>
-<%--                        <td>--%>
-
-<%--                        </td>--%>
-<%--                        <td>--%>
-
-<%--                        </td>--%>
-<%--                        <td>--%>
-
-<%--                        </td>--%>
-<%--                        <td>--%>
-<%--                            <div class="checkout_btn_inner d-flex align-items-center">--%>
-<%--                                <a class="gray_btn" href="web-home">Tiếp tục mua sắm</a>--%>
-<%--                                <a class="primary-btn" href="#">Thanh toán</a>--%>
-<%--                            </div>--%>
-<%--                        </td>--%>
-<%--                    </tr>--%>
                     </tbody>
                 </table>
+                <c:set  var="total" value="0"/>
+                <c:forEach var="i" items="${sessionScope.listItem}">
+                    <c:set var="total" value="${total + i.product.product_price*i.quantity}"/>
+                </c:forEach>
                 <div class="sub-total">
-                    <h5>Tổng tạm tính: 20000000 đ</h5>
+                    <h5>Tổng tạm tính: ${total} đ</h5>
                 </div>
 
                 <div class="checkout_btn_inner d-flex align-items-center proceed-custom">

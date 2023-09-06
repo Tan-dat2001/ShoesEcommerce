@@ -41,67 +41,73 @@
                 </div>
             </div>
             <div class="col-lg-5 offset-lg-1">
-                <div class="s_product_text">
-                    <h3>${product.product_name}</h3>
-                    <%--productPrice được format và setAttribute ở ProductDetailController--%>
-                    <h2>${productPrice}</h2>
-                    <h5 class="product-purchases">Đã bán: ${product.purchases}</h5>
-<%--                    <ul class="list">--%>
-<%--                        <li><a class="active" href="#"><span>Category</span> : Household</a></li>--%>
-<%--                        <li><a href="#"><span>Availibility</span> : In Stock</a></li>--%>
-<%--                    </ul>--%>
-                    <div class="container-size" style="margin-top: 32px; color:#000;">
-                        <div class="select-size">Chọn kích cỡ</div>
-                        <div class="product-size">
-                            <div class="product-item-size">
-                                <input type="radio" id="size35" name="size" value="35">
-                                <label for="size35">35</label><br>
-                            </div>
-                            <div class="product-item-size">
-                                <input type="radio" id="size36" name="size" value="36">
-                                <label for="size36">36</label><br>
-                            </div>
-                            <div class="product-item-size">
-                                <input type="radio" id="size37" name="size" value="37">
-                                <label for="size37">37</label>
-                            </div>
-                            <div class="product-item-size">
-                                <input type="radio" id="size38" name="size" value="38">
-                                <label for="size38">38</label>
-                            </div>
-                            <div class="product-item-size">
-                                <input type="radio" id="size39" name="size" value="39">
-                                <label for="size39">39</label>
-                            </div>
-                            <div class="product-item-size">
-                                <input type="radio" id="size40" name="size" value="40">
-                                <label for="size40">40</label>
-                            </div>
-                            <div class="product-item-size">
-                                <input type="radio" id="size41" name="size" value="41">
-                                <label for="size41">41</label>
-                            </div>
-                            <div class="product-item-size">
-                                <input type="radio" id="size42" name="size" value="42">
-                                <label for="size42">42</label>
+                <form action="addtocart" method="get">
+                    <div class="s_product_text">
+                        <h3>${product.product_name}</h3>
+                        <%--productPrice được format và setAttribute ở ProductDetailController--%>
+                        <h2>${productPrice}</h2>
+                        <h5 class="product-purchases">Đã bán: ${product.purchases}</h5>
+                        <%--                    <ul class="list">--%>
+                        <%--                        <li><a class="active" href="#"><span>Category</span> : Household</a></li>--%>
+                        <%--                        <li><a href="#"><span>Availibility</span> : In Stock</a></li>--%>
+                        <%--                    </ul>--%>
+
+                        <div class="container-size" style="margin-top: 32px; color:#000;">
+                            <div class="select-size">Chọn kích cỡ</div>
+                            <div class="product-size">
+                                <div class="product-item-size">
+                                    <input type="radio" id="size35" name="size" value="35">
+                                    <label for="size35">35</label><br>
+                                </div>
+                                <div class="product-item-size">
+                                    <input type="radio" id="size36" name="size" value="36">
+                                    <label for="size36">36</label><br>
+                                </div>
+                                <div class="product-item-size">
+                                    <input type="radio" id="size37" name="size" value="37">
+                                    <label for="size37">37</label>
+                                </div>
+                                <div class="product-item-size">
+                                    <input type="radio" id="size38" name="size" value="38">
+                                    <label for="size38">38</label>
+                                </div>
+                                <div class="product-item-size">
+                                    <input type="radio" id="size39" name="size" value="39">
+                                    <label for="size39">39</label>
+                                </div>
+                                <div class="product-item-size">
+                                    <input type="radio" id="size40" name="size" value="40">
+                                    <label for="size40">40</label>
+                                </div>
+                                <div class="product-item-size">
+                                    <input type="radio" id="size41" name="size" value="41">
+                                    <label for="size41">41</label>
+                                </div>
+                                <div class="product-item-size">
+                                    <input type="radio" id="size42" name="size" value="42">
+                                    <label for="size42">42</label>
+                                </div>
                             </div>
                         </div>
+                        <div class="product_count">
+                            <%--@declare id="qty"--%><label for="qty">Quantity:</label>
+                            <input type="text" name="quantity" id="sst" maxlength="12" value="1" title="Số lượng:"
+                                   class="input-text qty">
+                            <button
+                                    onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                    class="increase items-count increase-custom" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                            <button
+                                    onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 1 ) result.value--;return false;"
+                                    class="reduced items-count reduced-custom" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                        </div>
+                        <div class="card_area d-flex align-items-center">
+                            <button class="primary-btn" type="submit" style="border: none">Thêm vào giỏ hàng</button>
+                        </div>
+                        <!-- Thêm phần tử ẩn để lưu giá trị kích cỡ -->
+                        <input type="hidden" name="selectedSize" id="selected-size">
+                        <input type="hidden" name="productId" value="${product.product_id}">
                     </div>
-                    <div class="product_count">
-                        <%--@declare id="qty"--%><label for="qty">Quantity:</label>
-                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                               class="input-text qty">
-                        <button
-                                onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                        <button
-                                onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                    </div>
-                    <div class="card_area d-flex align-items-center">
-                        <a class="primary-btn" href="#">Thêm vào giỏ hàng</a>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -134,5 +140,19 @@
     </div>
 </section>
 <!--================End Product Description Area =================-->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var radioButtons = document.querySelectorAll('input[name="size"]');
+        var selectedSizeInput = document.getElementById('selected-size');
+
+        radioButtons.forEach(function(radioButton) {
+            radioButton.addEventListener('change', function() {
+                if (this.checked) {
+                    selectedSizeInput.value = this.value;
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
