@@ -4,11 +4,14 @@ public class Item {
     private Product product;
     private int quantity;
     private float price;
+    private int size;
 
-    public Item(Product product, int quantity, float price) {
+
+    public Item(Product product, int quantity, float price, int size ) {
         this.product = product;
         this.quantity = quantity;
         this.price = price;
+        this.size = size;
     }
 
     public Product getProduct() {
@@ -33,5 +36,13 @@ public class Item {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

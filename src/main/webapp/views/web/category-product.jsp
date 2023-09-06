@@ -137,10 +137,10 @@
                                 </div>
                                 <div class="prd-bottom">
 
-                                    <a href="" class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Thêm vào giỏ</p>
-                                    </a>
+<%--                                    <a href="addtocart?productId=${p.product_id}&quantity=1" class="social-info">--%>
+<%--                                        <span class="ti-bag"></span>--%>
+<%--                                        <p class="hover-text">Thêm vào giỏ</p>--%>
+<%--                                    </a>--%>
                                     <a href="product-detail?productId=${p.product_id}" class="social-info">
                                         <span class="lnr lnr-move"></span>
                                         <p class="hover-text">Xem chi tiết</p>

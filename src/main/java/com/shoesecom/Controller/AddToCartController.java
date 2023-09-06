@@ -32,9 +32,10 @@ public class AddToCartController extends HttpServlet {
             }
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             int productId = Integer.parseInt(request.getParameter("productId"));
+            int size = Integer.parseInt(request.getParameter("selectedSize"));
             Product product = productService.getProductById(productId);
             float price =  product.getProduct_price();
-            Item item = new Item(product, quantity, price);
+            Item item = new Item(product, quantity, price, size);
             cart.addItem(item);
             List<Item> list = cart.getItems();
             session.setAttribute("listItem",list);

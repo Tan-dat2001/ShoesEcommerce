@@ -84,3 +84,25 @@
 .cart_area .container .cart_inner .table-responsive .table tbody tr:last-child{
     border-bottom: 1px solid #dee2e6;
 }
+
+.reduced-custom{
+    bottom: 0 !important;
+}
+
+.increase-custom{
+    top:0 !important;
+}
+
+.product_description_area .container .tab-content .description-content p{
+    color: #333;
+    font-size: 16px;
+}
+
+.img-custom{
+    height: 148px;
+    width: 120px;
+}
+
+.nav li a, .nav li .lnr{
+    font-weight: 600 !important;
+}
