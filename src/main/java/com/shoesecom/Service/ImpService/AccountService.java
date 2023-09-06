@@ -33,6 +33,18 @@ public class AccountService implements IAccountService {
     }
 
     @Override
+    public void updateAccount(Account account) {
+        accountDAO.updateAccount(account);
+    }
+
+    @Override
+    public void updatePassword(Account account) {
+        accountDAO.updatePassword(account);
+
+
+    }
+
+    @Override
     public List<Account> getAll() {
         return accountDAO.getAll();
     }
