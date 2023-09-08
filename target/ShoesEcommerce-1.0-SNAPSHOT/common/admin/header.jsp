@@ -137,7 +137,7 @@
         <div class="sidepanel-inner d-flex flex-column">
             <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
             <div class="app-branding">
-                <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="/template/admin/assets/images/app-logo.svg" alt="logo"><span class="logo-text">PORTAL</span></a>
+                <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="/template/admin/assets/images/app-logo.svg" alt="logo"><span class="logo-text">ADMIN</span></a>
 
             </div><!--//app-branding-->
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
@@ -151,7 +151,7 @@
 		  <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
 		</svg>
 						         </span>
-                            <span class="nav-link-text">Overview</span>
+                            <span class="nav-link-text">Trang Chủ</span>
                         </a><!--//nav-link-->
                     </li><!--//nav-item-->
 <%--                    <li class="nav-item">--%>
