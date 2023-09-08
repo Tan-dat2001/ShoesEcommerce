@@ -26,8 +26,6 @@ public class ProfileController extends HttpServlet {
         rs.forward(request,response);
 
 
-
-
     }
 
     @Override
@@ -35,7 +33,7 @@ public class ProfileController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession();
         String url = request.getRequestURI().replace("/","");
-
+        Account account = (Account) session.getAttribute("account");
         int account_id = Integer.parseInt( request.getParameter("account_id"));
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
@@ -43,18 +41,20 @@ public class ProfileController extends HttpServlet {
         String address = request.getParameter("address");
 
         String selectedDateStr = request.getParameter("dateofbirth");
-        java.sql.Date dateofbirth = null;
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date utilDate = sdf.parse(selectedDateStr);
-            dateofbirth = new java.sql.Date(utilDate.getTime());
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        Date dateofbirth;
+        if(selectedDateStr.equals("")){
+            dateofbirth = account.getDateofbirth();
+        }else{
+//            java.sql.Date dateofbirth = null;
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                java.util.Date utilDate = sdf.parse(selectedDateStr);
+                dateofbirth = new java.sql.Date(utilDate.getTime());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
-
         if(url.equals("update-profile")){
-            Account account = (Account) session.getAttribute("account");
             account.setAccount_id(account_id);
             account.setName(name);
             account.setPhone(phone);
@@ -67,11 +67,6 @@ public class ProfileController extends HttpServlet {
             session.setAttribute("account",account);
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/profile.jsp");
             rd.forward(request,response);
-
-
-
         }
-
-
     }
 }

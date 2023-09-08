@@ -1,6 +1,7 @@
 package com.shoesecom.Controller;
 
 import com.shoesecom.Model.Account;
+import com.shoesecom.Model.Cart;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -16,7 +17,6 @@ public class ShowCartController extends HttpServlet {
         if(user != null){
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/cart.jsp");
             rd.forward(request,response);
-
         }else{
             response.sendRedirect("login");
         }
