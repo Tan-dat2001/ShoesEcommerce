@@ -26,7 +26,7 @@
                     <ul class="nav navbar-nav menu_nav ml-auto nav-custom">
                         <li class="nav-item "><a class="nav-link" href="web-home">Trang chủ</a></li>
                         <li class="nav-item submenu dropdown">
-                            <a class="nav-link" href="web-category">Sản phẩm</a>
+                            <a class="nav-link" href="web-category">Cửa hàng</a>
                             <!-- <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                              aria-expanded="false">Sản phẩm</a> -->
                             <!-- <ul class="dropdown-menu">

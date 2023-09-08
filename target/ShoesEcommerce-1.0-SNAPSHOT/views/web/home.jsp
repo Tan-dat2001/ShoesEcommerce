@@ -58,8 +58,8 @@
                             <div class="product-details">
                                 <h6>${p.product_name}</h6>
                                 <div class="price">
-                                    <h6>${p.product_price} đ</h6>
-                                    <h6 class="l-through">${p.product_price*1.2} đ</h6>
+                                    <h6 class="formatted-price">${p.product_price} đ</h6>
+                                    <h6  class="l-through formatted-price">${p.product_price*1.2} đ</h6>
                                 </div>
                                 <div class="prd-bottom">
 
@@ -92,5 +92,31 @@
         </c:forEach>
     </ul>
 </nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lấy tất cả các phần tử có class "formatted-price"
+        var formattedPriceElements = document.querySelectorAll('.formatted-price');
+
+        // Lặp qua tất cả các phần tử để định dạng giá trị
+        formattedPriceElements.forEach(function(element) {
+            var priceText = element.textContent;
+            var price = parseFloat(priceText.replace('.0 đ', '').replace(/\./g, '').replace(',', '.'));
+
+            // Kiểm tra xem giá có hợp lệ không
+            if (!isNaN(price)) {
+                // Định dạng giá và cập nhật nội dung của phần tử
+                var formattedPrice = formatCurrency(price);
+                element.textContent = formattedPrice;
+            }
+        });
+    });
+
+    // Hàm để định dạng số tiền sang tiền Việt Nam
+    function formatCurrency(amount) {
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+    }
+
+</script>
 </body>
 </html>
