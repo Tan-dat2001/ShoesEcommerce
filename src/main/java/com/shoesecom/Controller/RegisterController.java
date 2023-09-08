@@ -50,7 +50,7 @@ public class RegisterController extends HttpServlet {
         int code = random.nextInt(999999);
 
         Account acc = accountService.getAccountByEmail(email);
-        if (password == null){
+        if (password==null){
             String errorMessage = "Vui lòng nhập lại";
             request.getSession().setAttribute("errorMessage", errorMessage);
             response.sendRedirect("register");
