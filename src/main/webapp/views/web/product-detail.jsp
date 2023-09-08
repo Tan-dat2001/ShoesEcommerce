@@ -45,7 +45,7 @@
                     <div class="s_product_text">
                         <h3>${product.product_name}</h3>
                         <%--productPrice được format và setAttribute ở ProductDetailController--%>
-                        <h2>${productPrice}</h2>
+                        <h2 id="formatted-price">${productPrice}</h2>
                         <h5 class="product-purchases">Đã bán: ${product.purchases}</h5>
                         <%--                    <ul class="list">--%>
                         <%--                        <li><a class="active" href="#"><span>Category</span> : Household</a></li>--%>
@@ -154,5 +154,6 @@
         });
     });
 </script>
+
 </body>
 </html>

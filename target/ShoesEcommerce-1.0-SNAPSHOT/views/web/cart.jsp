@@ -35,13 +35,14 @@
                         <th scope="col">Giá</th>
                         <th scope="col">Số lượng</th>
                         <th scope="col">Tổng tiền</th>
+                        <th scope="col">Xóa sản phẩm</th>
                     </tr>
                     </thead>
                     <tbody>
 
                     <c:set var="o" value="${sessionScope.cart}" />
                     <c:forEach var="i" items="${o.items}" >
-                        <tr>
+                        <tr class="product-item-custom">
                             <td>
                                 <div class="media">
                                     <div class="d-flex">
@@ -56,32 +57,40 @@
                                 <h5>${i.size}</h5>
                             </td>
                             <td>
-                                <h5>${i.product.product_price} đ</h5>
+                                <h5 class="product-price" id="formatted-amount1">${i.product.product_price} đ</h5>
                             </td>
                             <td>
                                 <div class="product_count">
                                     <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
                                            class="input-text qty">
-                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count increase-custom" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                    <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count reduced-custom" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                    <button class="increase items-count increase-custom" type="button">
+                                        <i class="lnr lnr-chevron-up"></i>
+                                    </button>
+                                    <button class="reduced items-count reduced-custom" type="button">
+                                        <i class="lnr lnr-chevron-down"></i>
+                                    </button>
                                 </div>
                             </td>
                             <td>
-                                <h5>${i.product.product_price*i.quantity} đ</h5>
+                                <h5 class="total-price" id="formatted-amount2">${i.product.product_price*i.quantity} đ</h5>
+                            </td>
+                            <td style="text-align: center;">
+                                <a class="remove-custom" href="process-cart?productId=${i.product.product_id}">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>
 
                     </tbody>
                 </table>
+<%--                <h2>${messageCart}</h2>--%>
                 <c:set  var="total" value="0"/>
                 <c:forEach var="i" items="${sessionScope.listItem}">
                     <c:set var="total" value="${total + i.product.product_price*i.quantity}"/>
                 </c:forEach>
                 <div class="sub-total">
-                    <h5>Tổng tạm tính: ${total} đ</h5>
+                    <h5 id="total-amount formatted-amount">Tổng tạm tính: 0 đ</h5>
                 </div>
 
                 <div class="checkout_btn_inner d-flex align-items-center proceed-custom">
@@ -93,6 +102,147 @@
         </div>
     </div>
 </section>
+<%--<script>--%>
+<%--    document.addEventListener('DOMContentLoaded', function() {--%>
+<%--        var productItems = document.querySelectorAll('.product-item-custom');--%>
+<%--        var totalAmountElement = document.getElementById('total-amount');--%>
+
+<%--        productItems.forEach(function(item) {--%>
+<%--            var quantityInput = item.querySelector('.qty');--%>
+<%--            var increaseButton = item.querySelector('.increase');--%>
+<%--            var reduceButton = item.querySelector('.reduced');--%>
+<%--            var priceElement = item.querySelector('.product-price');--%>
+<%--            var totalPriceElement = item.querySelector('.total-price');--%>
+
+<%--            var price = parseInt(priceElement.textContent);--%>
+
+<%--            increaseButton.addEventListener('click', function() {--%>
+<%--                var currentQuantity = parseInt(quantityInput.value);--%>
+<%--                if (!isNaN(currentQuantity)) {--%>
+<%--                    quantityInput.value = currentQuantity + 1;--%>
+<%--                    updateTotalPrice(priceElement, totalPriceElement, quantityInput.value);--%>
+<%--                    updateTotalAmount();--%>
+<%--                }--%>
+<%--            });--%>
+
+<%--            reduceButton.addEventListener('click', function() {--%>
+<%--                var currentQuantity = parseInt(quantityInput.value);--%>
+<%--                if (!isNaN(currentQuantity) && currentQuantity > 1) {--%>
+<%--                    quantityInput.value = currentQuantity - 1;--%>
+<%--                    updateTotalPrice(priceElement, totalPriceElement, quantityInput.value);--%>
+<%--                    updateTotalAmount();--%>
+<%--                }--%>
+<%--            });--%>
+<%--        });--%>
+
+<%--        function updateTotalPrice(priceElement, totalPriceElement, quantity) {--%>
+<%--            var price = parseInt(priceElement.textContent);--%>
+<%--            if (!isNaN(price)) {--%>
+<%--                var total = price * quantity;--%>
+<%--                totalPriceElement.textContent = formatCurrency(total);--%>
+<%--            }--%>
+<%--        }--%>
+
+<%--        function updateTotalAmount() {--%>
+<%--            var productTotalElements = document.querySelectorAll('.total-price');--%>
+<%--            var total = Array.from(productTotalElements).reduce(function(sum, element) {--%>
+<%--                var price = parseFloat(element.textContent.replace(' đ', '').replace(/\./g, '').replace(',', '.'));--%>
+<%--                if (!isNaN(price)) {--%>
+<%--                    return sum + price;--%>
+<%--                }--%>
+<%--                return sum;--%>
+<%--            }, 0);--%>
+<%--            totalAmountElement.textContent = formatCurrency(total);--%>
+<%--        }--%>
+
+<%--        function formatCurrency(amount) {--%>
+<%--            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);--%>
+<%--        }--%>
+<%--    });--%>
+
+<%--</script>--%>
+<%--<script>--%>
+<%--    // Lấy phần tử HTML có id="formatted-amount"--%>
+<%--    var formattedAmountElement1 = document.getElementById('formatted-amount1');--%>
+<%--    var formattedAmountElement2 = document.getElementById('formatted-amount2');--%>
+
+<%--    // Lấy số tiền từ nội dung của phần tử HTML--%>
+<%--    var productPrice1 = parseFloat(formattedAmountElement1.textContent);--%>
+<%--    var productPrice2 = parseFloat(formattedAmountElement2.textContent);--%>
+
+<%--    // Định dạng số tiền--%>
+<%--    var formattedPrice1 = formatCurrency(productPrice1)--%>
+<%--    var formattedPrice2 = formatCurrency(productPrice2)--%>
+
+<%--    // Cập nhật lại nội dung của phần tử HTML--%>
+<%--    formattedAmountElement1.textContent = formattedPrice1;--%>
+<%--    formattedAmountElement2.textContent = formattedPrice2;--%>
+
+
+<%--    // Hàm để định dạng số tiền--%>
+<%--    function formatCurrency(amount) {--%>
+<%--        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);--%>
+<%--    }--%>
+<%--</script>--%>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var productItems = document.querySelectorAll('.product-item-custom');
+        var totalAmountElement = document.getElementById('total-amount');
+
+        // Tạo một mảng lưu giá tiền của từng sản phẩm
+        var productPrices = [];
+
+        productItems.forEach(function(item) {
+            var quantityInput = item.querySelector('.qty');
+            var increaseButton = item.querySelector('.increase');
+            var reduceButton = item.querySelector('.reduced');
+            var priceElement = item.querySelector('.product-price');
+            var totalPriceElement = item.querySelector('.total-price');
+
+            // Lấy giá tiền ban đầu của sản phẩm
+            var price = parseFloat(priceElement.textContent.replace(' đ', '').replace(/\./g, '').replace(',', '.'));
+            productPrices.push(price);
+
+            increaseButton.addEventListener('click', function() {
+                var currentQuantity = parseInt(quantityInput.value);
+                if (!isNaN(currentQuantity)) {
+                    quantityInput.value = currentQuantity + 1;
+                    updateTotalPrice(priceElement, totalPriceElement, quantityInput.value);
+                    updateTotalAmount(productPrices);
+                }
+            });
+
+            reduceButton.addEventListener('click', function() {
+                var currentQuantity = parseInt(quantityInput.value);
+                if (!isNaN(currentQuantity) && currentQuantity > 1) {
+                    quantityInput.value = currentQuantity - 1;
+                    updateTotalPrice(priceElement, totalPriceElement, quantityInput.value);
+                    updateTotalAmount(productPrices);
+                }
+            });
+        });
+
+        function updateTotalPrice(priceElement, totalPriceElement, quantity) {
+            var price = parseFloat(priceElement.textContent.replace('.0 đ', '').replace(/\./g, '').replace(',', '.'));
+            if (!isNaN(price)) {
+                var total = price * quantity;
+                totalPriceElement.textContent = formatCurrency(total);
+            }
+        }
+
+        function updateTotalAmount(prices) {
+            var total = prices.reduce(function(sum, price) {
+                return sum + price;
+            }, 0);
+            totalAmountElement.textContent = formatCurrency(total);
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+        }
+    });
+
+</script>
 <!--================End Cart Area =================-->
 </body>
 </html>
