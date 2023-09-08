@@ -25,6 +25,7 @@ public class ProductByCategoryController extends HttpServlet {
 
 
         int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+
         List<Product> p = productService.getProductByCategory(categoryId);
         request.setAttribute("product",p);
 

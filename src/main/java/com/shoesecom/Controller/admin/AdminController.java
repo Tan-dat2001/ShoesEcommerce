@@ -15,29 +15,10 @@ import java.util.List;
 
 @WebServlet(name = "AdminController", value = "/admin-home")
 public class AdminController extends HttpServlet {
-    @Inject
-    private IProductService productService;
-    @Inject
-    private ICategoryService categoryService;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String indexPage = request.getParameter("index");
-        if(indexPage == null ) {
-            indexPage = "1";
-        }
-        int index = Integer.parseInt(indexPage);
-        ProductDAO productDAO = new ProductDAO();
-        int count = productDAO.countProduct();
-        int endPage = count/18;
-        if(count % 18 != 0) {
-            endPage++;
-        }
-        request.setAttribute("endPage", endPage);
-        request.setAttribute("index", index);
-        List<Category> category = categoryService.getAllCategory();
-        request.setAttribute("category",category);
-        List<Product> listProducts = productDAO.pagingProduct(index);
-        request.setAttribute("listProducts", listProducts);
+
         RequestDispatcher rd = request.getRequestDispatcher("views/admin/admin.jsp");
         rd.forward(request,response);
 
