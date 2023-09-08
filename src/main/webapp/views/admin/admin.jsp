@@ -1,267 +1,161 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page import="com.shoesecom.Model.Account" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
 
 </head>
+<%
+    HttpSession ss = request.getSession();
+    Account account = (Account) ss.getAttribute("account");
+%>
 <body class="app">
-<div class="app-content pt-3 p-md-3 p-lg-4">
-    <div class="container-xl">
-
-        <div class="row g-3 mb-4 align-items-center justify-content-between">
-            <div class="col-auto">
-                <h1 class="app-page-title mb-0">Orders</h1>
-            </div>
-            <div class="col-auto">
-                <div class="page-utilities">
-                    <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
-                        <div class="col-auto">
 
 
-                        </div><!--//col-->
-                        <div class="col-auto">
 
-                            <select class="form-select w-auto">
-                                <option selected value="option-1">All</option>
-                                <option value="option-2">This week</option>
-                                <option value="option-3">This month</option>
-                                <option value="option-4">Last 3 months</option>
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
 
-                            </select>
-                        </div>
-                        <div class="col-auto">
-                            <a class="btn app-btn-secondary" href="#">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download me-1"
-                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                    <path fill-rule="evenodd"
-                                          d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                                </svg>
-                                Download CSV
-                            </a>
-                        </div>
-                    </div><!--//row-->
-                </div><!--//table-utilities-->
-            </div><!--//col-auto-->
-        </div><!--//row-->
+            <h1 class="app-page-title">Overview</h1>
 
+            <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration" role="alert">
+                <div class="inner">
+                    <div class="app-card-body p-3 p-lg-4">
+                        <h3 class="mb-3">Welcome, ${account.getName()}!</h3>
+                        <div class="row gx-5 gy-3">
+                            <div class="col-12 col-lg-9">
 
-        <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
-            <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab"
-               href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">All</a>
-            <a class="flex-sm-fill text-sm-center nav-link" id="orders-paid-tab" data-bs-toggle="tab"
-               href="#orders-paid" role="tab" aria-controls="orders-paid" aria-selected="false">Paid</a>
-            <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab"
-               href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Pending</a>
-            <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
-               href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Cancelled</a>
-        </nav>
-
-
-        <div class="tab-content" id="orders-table-tab-content">
-            <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
-                <div class="app-card app-card-orders-table shadow-sm mb-5">
-                    <div class="app-card-body">
-                        <div class="table-responsive">
-
-                            <table class="table app-table-hover mb-0 text-left">
-                                <thead>
-                                <tr>
-                                    <th class="cell">ID Sản Phẩm</th>
-                                    <th class="cell">Tên Sản Phẩm</th>
-                                    <th class="cell">Loại Sản Phẩm</th>
-                                    <th class="cell">Giá</th>
-                                    <th class="cell">Số lượng</th>
-                                    <th class="cell">Status</th>
-                                    <th class="cell">Mô tả</th>
-                                    <th class="cell">Ảnh</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${listProducts}" var="p">
-                                    <tr>
-                                        <td class="cell">${p.product_id}</td>
-                                        <td class="cell"><span class="truncate">${p.product_name}</span>
-                                        </td>
-                                        <c:forEach items="${category}" var="c">
-                                            <c:if test="${p.product_id == c.category_id}">
-                                                <td><span class="truncate">${c.category_name}</span></td>
-                                            </c:if>
-                                        </c:forEach>
-
-                                        <td class="cell">${p.product_price} đ</td>
-                                        <td class="cell">${p.quantity}</td>
-                                        <td class="cell"><span class="badge bg-success">${p.status}</span></td>
-                                        <td class="cell" style="width: 300px">${p.product_desc}</td>
-                                        <td class="cell"><img style="width: 100px; height: 100px" src="${p.product_image}" alt=""></td>
-                                    </tr>
-                                </c:forEach>
-
-                                </tbody>
-                            </table>
-                        </div><!--//table-responsive-->
-
+                                <div>Portal is a free Bootstrap 5 admin dashboard template. The design is simple, clean and modular so it's a great base for building any modern web app.</div>
+                            </div><!--//col-->
+                            <div class="col-12 col-lg-3">
+                                <a class="btn app-btn-primary" href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-arrow-down me-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+                                    <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+                                    <path fill-rule="evenodd" d="M8 6a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 10.293V6.5A.5.5 0 0 1 8 6z"/>
+                                </svg>Free Download</a>
+                            </div><!--//col-->
+                        </div><!--//row-->
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div><!--//app-card-body-->
-                </div><!--//app-card-->
-                <nav class="app-pagination">
-                    <ul class="pagination justify-content-center">
 
-                        <c:forEach var="i" begin="1" end="${endPage}">
-                            <li class="page-item disabled"><a class="page-link ${index == i ? 'active-pagination':''}"
-                                                              href="admin-home?index=${i}">${i}</a></li>
-                        </c:forEach>
+                </div><!--//inner-->
+            </div><!--//app-card-->
 
-                    </ul>
-                </nav><!--//app-pagination-->
+            <div class="row g-4 mb-4">
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">Total Sales</h4>
+                            <div class="stats-figure">$12,628</div>
+                            <div class="stats-meta text-success">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                                </svg> 20%</div>
+                        </div><!--//app-card-body-->
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div><!--//app-card-->
+                </div><!--//col-->
 
-            </div><!--//tab-pane-->
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">Expenses</h4>
+                            <div class="stats-figure">$2,250</div>
+                            <div class="stats-meta text-success">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                                </svg> 5% </div>
+                        </div><!--//app-card-body-->
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div><!--//app-card-->
+                </div><!--//col-->
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">Projects</h4>
+                            <div class="stats-figure">23</div>
+                            <div class="stats-meta">
+                                Open</div>
+                        </div><!--//app-card-body-->
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div><!--//app-card-->
+                </div><!--//col-->
+                <div class="col-6 col-lg-3">
+                    <div class="app-card app-card-stat shadow-sm h-100">
+                        <div class="app-card-body p-3 p-lg-4">
+                            <h4 class="stats-type mb-1">Invoices</h4>
+                            <div class="stats-figure">6</div>
+                            <div class="stats-meta">New</div>
+                        </div><!--//app-card-body-->
+                        <a class="app-card-link-mask" href="#"></a>
+                    </div><!--//app-card-->
+                </div><!--//col-->
+            </div><!--//row-->
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-lg-6">
+                    <div class="app-card app-card-chart h-100 shadow-sm">
+                        <div class="app-card-header p-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <h4 class="app-card-title">Line Chart Example</h4>
+                                </div><!--//col-->
+                                <div class="col-auto">
+                                    <div class="card-header-action">
+                                        <a href="charts.html">More charts</a>
+                                    </div><!--//card-header-actions-->
+                                </div><!--//col-->
+                            </div><!--//row-->
+                        </div><!--//app-card-header-->
+                        <div class="app-card-body p-3 p-lg-4">
+                            <div class="mb-3 d-flex">
+                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
+                                    <option value="1" selected>This week</option>
+                                    <option value="2">Today</option>
+                                    <option value="3">This Month</option>
+                                    <option value="3">This Year</option>
+                                </select>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="canvas-linechart" ></canvas>
+                            </div>
+                        </div><!--//app-card-body-->
+                    </div><!--//app-card-->
+                </div><!--//col-->
+                <div class="col-12 col-lg-6">
+                    <div class="app-card app-card-chart h-100 shadow-sm">
+                        <div class="app-card-header p-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <h4 class="app-card-title">Bar Chart Example</h4>
+                                </div><!--//col-->
+                                <div class="col-auto">
+                                    <div class="card-header-action">
+                                        <a href="charts.html">More charts</a>
+                                    </div><!--//card-header-actions-->
+                                </div><!--//col-->
+                            </div><!--//row-->
+                        </div><!--//app-card-header-->
+                        <div class="app-card-body p-3 p-lg-4">
+                            <div class="mb-3 d-flex">
+                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
+                                    <option value="1" selected>This week</option>
+                                    <option value="2">Today</option>
+                                    <option value="3">This Month</option>
+                                    <option value="3">This Year</option>
+                                </select>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="canvas-barchart" ></canvas>
+                            </div>
+                        </div><!--//app-card-body-->
+                    </div><!--//app-card-->
+                </div><!--//col-->
 
-            <div class="tab-pane fade" id="orders-paid" role="tabpanel" aria-labelledby="orders-paid-tab">
-                <div class="app-card app-card-orders-table mb-5">
-                    <div class="app-card-body">
-                        <div class="table-responsive">
-
-                            <table class="table mb-0 text-left">
-                                <thead>
-                                <tr>
-                                    <th class="cell">Order</th>
-                                    <th class="cell">Product</th>
-                                    <th class="cell">Customer</th>
-                                    <th class="cell">Date</th>
-                                    <th class="cell">Status</th>
-                                    <th class="cell">Total</th>
-                                    <th class="cell"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="cell">#15346</td>
-                                    <td class="cell"><span class="truncate">Lorem ipsum dolor sit amet eget volutpat erat</span>
-                                    </td>
-                                    <td class="cell">John Sanders</td>
-                                    <td class="cell"><span>17 Oct</span><span class="note">2:16 PM</span></td>
-                                    <td class="cell"><span class="badge bg-success">Paid</span></td>
-                                    <td class="cell">$259.35</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-                                </tr>
-
-                                <tr>
-                                    <td class="cell">#15344</td>
-                                    <td class="cell"><span class="truncate">Pellentesque diam imperdiet</span></td>
-                                    <td class="cell">Teresa Holland</td>
-                                    <td class="cell"><span class="cell-data">16 Oct</span><span
-                                            class="note">01:16 AM</span></td>
-                                    <td class="cell"><span class="badge bg-success">Paid</span></td>
-                                    <td class="cell">$123.00</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-                                </tr>
-
-                                <tr>
-                                    <td class="cell">#15343</td>
-                                    <td class="cell"><span class="truncate">Vestibulum a accumsan lectus sed mollis ipsum</span>
-                                    </td>
-                                    <td class="cell">Jayden Massey</td>
-                                    <td class="cell"><span class="cell-data">15 Oct</span><span
-                                            class="note">8:07 PM</span></td>
-                                    <td class="cell"><span class="badge bg-success">Paid</span></td>
-                                    <td class="cell">$199.00</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-                                </tr>
-
-
-                                <tr>
-                                    <td class="cell">#15341</td>
-                                    <td class="cell"><span class="truncate">Morbi vulputate lacinia neque et sollicitudin</span>
-                                    </td>
-                                    <td class="cell">Raymond Atkins</td>
-                                    <td class="cell"><span class="cell-data">11 Oct</span><span
-                                            class="note">11:18 AM</span></td>
-                                    <td class="cell"><span class="badge bg-success">Paid</span></td>
-                                    <td class="cell">$678.26</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-                                </tr>
-
-                                </tbody>
-                            </table>
-                        </div><!--//table-responsive-->
-                    </div><!--//app-card-body-->
-                </div><!--//app-card-->
-            </div><!--//tab-pane-->
-
-            <div class="tab-pane fade" id="orders-pending" role="tabpanel" aria-labelledby="orders-pending-tab">
-                <div class="app-card app-card-orders-table mb-5">
-                    <div class="app-card-body">
-                        <div class="table-responsive">
-                            <table class="table mb-0 text-left">
-                                <thead>
-                                <tr>
-                                    <th class="cell">Order</th>
-                                    <th class="cell">Product</th>
-                                    <th class="cell">Customer</th>
-                                    <th class="cell">Date</th>
-                                    <th class="cell">Status</th>
-                                    <th class="cell">Total</th>
-                                    <th class="cell"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="cell">#15345</td>
-                                    <td class="cell"><span class="truncate">Consectetur adipiscing elit</span></td>
-                                    <td class="cell">Dylan Ambrose</td>
-                                    <td class="cell"><span class="cell-data">16 Oct</span><span
-                                            class="note">03:16 AM</span></td>
-                                    <td class="cell"><span class="badge bg-warning">Pending</span></td>
-                                    <td class="cell">$96.20</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div><!--//table-responsive-->
-                    </div><!--//app-card-body-->
-                </div><!--//app-card-->
-            </div><!--//tab-pane-->
-            <div class="tab-pane fade" id="orders-cancelled" role="tabpanel" aria-labelledby="orders-cancelled-tab">
-                <div class="app-card app-card-orders-table mb-5">
-                    <div class="app-card-body">
-                        <div class="table-responsive">
-                            <table class="table mb-0 text-left">
-                                <thead>
-                                <tr>
-                                    <th class="cell">Order</th>
-                                    <th class="cell">Product</th>
-                                    <th class="cell">Customer</th>
-                                    <th class="cell">Date</th>
-                                    <th class="cell">Status</th>
-                                    <th class="cell">Total</th>
-                                    <th class="cell"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                <tr>
-                                    <td class="cell">#15342</td>
-                                    <td class="cell"><span class="truncate">Justo feugiat neque</span></td>
-                                    <td class="cell">Reina Brooks</td>
-                                    <td class="cell"><span class="cell-data">12 Oct</span><span
-                                            class="note">04:23 PM</span></td>
-                                    <td class="cell"><span class="badge bg-danger">Cancelled</span></td>
-                                    <td class="cell">$59.00</td>
-                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-                                </tr>
-
-                                </tbody>
-                            </table>
-                        </div><!--//table-responsive-->
-                    </div><!--//app-card-body-->
-                </div><!--//app-card-->
-            </div><!--//tab-pane-->
-        </div><!--//tab-content-->
+            </div><!--//row-->
 
 
-    </div><!--//container-fluid-->
-</div><!--//app-content-->
+
+        </div><!--//container-fluid-->
+</div>
 </body>
 </html>
