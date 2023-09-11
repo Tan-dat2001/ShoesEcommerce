@@ -17,10 +17,6 @@ public class PscDAO implements IPscDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-
-
-
-
     @Override
     public List<PSC> GetAllPSC() {
         List<PSC> list = new ArrayList<>();
@@ -68,6 +64,31 @@ public class PscDAO implements IPscDAO {
         }
 
         return null;
+    }
+
+    @Override
+    public void addPSC(PSC psc) {
+        String sql = "insert into psc(product_id, size_id, quantity) values(?,?,?)";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setInt(1,psc.getProduct_id());
+            ps.setInt(2,psc.getSize_id());
+            ps.setInt(3,psc.getQuantity());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void editPSC(PSC psc) {
+
+    }
+
+    @Override
+    public void deletePSC(int id) {
+
     }
 
     public static void main(String[] args) {

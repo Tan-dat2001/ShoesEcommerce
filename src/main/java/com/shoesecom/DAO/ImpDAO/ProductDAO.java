@@ -227,6 +227,36 @@ public class ProductDAO implements IProductDAO {
         return results;
     }
 
+    @Override
+    public void addProduct(Product product) {
+        String sql = "insert into product(category_id, discount_id, product_name, product_desc, product_price, product_image, quantity)"
+                + "values(?,?,?,?,?,?,?)";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setInt(1, product.getCategory_id());
+            ps.setInt(2, product.getDiscount_id());
+            ps.setString(3, product.getProduct_name());
+            ps.setString(4, product.getProduct_desc());
+            ps.setFloat(5, product.getProduct_price());
+            ps.setString(6, product.getProduct_image());
+            ps.setInt(7, product.getQuantity());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void editProduct(Product product) {
+
+    }
+
+    @Override
+    public void deleteProduct(int id) {
+
+    }
+
 
     public static void main(String[] args) {
 //        System.out.println(new ProductDAO().getAllProduct());
@@ -234,6 +264,6 @@ public class ProductDAO implements IProductDAO {
 //        System.out.println(new ProductDAO().searchProduct("Jordan"));
 
         System.out.println(new ProductDAO().getProductByPrice(2000000,3000000));
-
+        new ProductDAO().addProduct(new Product(0,1,1,80,100,"Giày Dat","ABC","image1","enabled",60000,null,null,null,null));
     }
 }

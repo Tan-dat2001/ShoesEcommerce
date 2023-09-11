@@ -10,4 +10,10 @@ public interface IImageDAO {
     Image getImageById(int id);
 
     Image getImageByProductId(int productId);
+
+    void addImage(Image image);
+
+    void editImage(Image image);
+
+    void deleteImage(int id);
 }

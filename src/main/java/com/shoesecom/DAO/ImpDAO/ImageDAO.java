@@ -53,6 +53,32 @@ public class ImageDAO implements IImageDAO {
         return null;
     }
 
+    @Override
+    public void addImage(Image image) {
+        String sql = "insert into image(product_id, image1, image2, image3) values(?,?,?,?)";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql );
+            ps.setInt(1, image.getProduct_id());
+            ps.setString(2, image.getImage1());
+            ps.setString(3, image.getImage2());
+            ps.setString(4, image.getImage3());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void editImage(Image image) {
+
+    }
+
+    @Override
+    public void deleteImage(int id) {
+
+    }
+
     public static void main(String[] args) {
 //        System.out.println(new ImageDAO().getImageById(1));
         System.out.println(new ImageDAO().getImageByProductId(8));

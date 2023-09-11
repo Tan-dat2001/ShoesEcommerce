@@ -12,5 +12,7 @@ public interface IProductDAO {
     List<Product> pagingProduct(int index);
     List<Product> searchProduct(String keyword);
     List<Product> getProductByPrice(float minPrice, float maxPrice);
-
+    void addProduct(Product product);
+    void editProduct(Product product);
+    void deleteProduct(int id);
 }

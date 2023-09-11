@@ -9,15 +9,30 @@ import java.util.List;
 
 public class PscService implements IPscService {
     @Inject
-    private IPscDAO pcsDAO;
+    private IPscDAO pscDAO;
     @Override
     public List<PSC> GetAllPSC() {
-       return pcsDAO.GetAllPSC();
+       return pscDAO.GetAllPSC();
 
     }
 
     @Override
     public List<PSC> GetPSCBySize(int product_id) {
-        return pcsDAO.GetPSCBySize(product_id);
+        return pscDAO.GetPSCBySize(product_id);
+    }
+
+    @Override
+    public void addPSC(PSC psc) {
+        pscDAO.addPSC(psc);
+    }
+
+    @Override
+    public void editPSC(PSC psc) {
+        pscDAO.editPSC(psc);
+    }
+
+    @Override
+    public void deletePSC(int id) {
+        pscDAO.deletePSC(id);
     }
 }

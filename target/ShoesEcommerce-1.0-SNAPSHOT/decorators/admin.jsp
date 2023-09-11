@@ -26,6 +26,7 @@
 
     <!-- FontAwesome JS-->
     <script defer src="/template/admin/assets/plugins/fontawesome/js/all.min.js"></script>
+    <link rel="stylesheet" href="<c:url value="/template/admin/assets/css/admin-custom.css"/> ">
 
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="/template/admin/assets/css/portal.css">

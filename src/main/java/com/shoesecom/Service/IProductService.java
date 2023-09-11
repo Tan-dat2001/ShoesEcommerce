@@ -13,5 +13,7 @@ public interface IProductService {
     int countProduct();
     List<Product> searchProduct(String keyword);
     List<Product> getProductByPrice(float minPrice, float maxPrice);
-
+    void addProduct(Product product);
+    void editProduct(Product product);
+    void deleteProduct(int id);
 }

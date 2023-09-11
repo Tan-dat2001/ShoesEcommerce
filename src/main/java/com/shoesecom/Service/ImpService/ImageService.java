@@ -24,4 +24,19 @@ public class ImageService implements IImageService {
     public Image getImageByProductId(int productId) {
         return imageDAO.getImageByProductId(productId);
     }
+
+    @Override
+    public void addImage(Image image) {
+        imageDAO.addImage(image);
+    }
+
+    @Override
+    public void editImage(Image image) {
+        imageDAO.editImage(image);
+    }
+
+    @Override
+    public void deleteImage(int id) {
+        imageDAO.deleteImage(id);
+    }
 }
