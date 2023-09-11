@@ -12,54 +12,58 @@
         <div class="container-xl">
             <div class="row g-3 mb-4 align-items-center justify-content-between">
                 <div class="col-auto">
+<<<<<<< HEAD
+                    <h1 class="app-page-title mb-0">Tất cả sản phẩm</h1>
+=======
                     <h1 class="app-page-title mb-0">Sản Phẩm</h1>
+>>>>>>> 19312d7a4b416cde6ce7648d33ef527e74a92359
                 </div>
-                <div class="col-auto">
-                    <div class="page-utilities">
-                        <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
-                            <div class="col-auto">
+<%--                <div class="col-auto">--%>
+<%--                    <div class="page-utilities">--%>
+<%--                        <div class="row g-2 justify-content-start justify-content-md-end align-items-center">--%>
+<%--                            <div class="col-auto">--%>
 
 
-                            </div><!--//col-->
-                            <div class="col-auto">
+<%--                            </div>--%>
+<%--                            <div class="col-auto">--%>
 
-                                <select class="form-select w-auto">
-                                    <option selected value="option-1">All</option>
-                                    <option value="option-2">This week</option>
-                                    <option value="option-3">This month</option>
-                                    <option value="option-4">Last 3 months</option>
+<%--                                <select class="form-select w-auto">--%>
+<%--                                    <option selected value="option-1">All</option>--%>
+<%--                                    <option value="option-2">This week</option>--%>
+<%--                                    <option value="option-3">This month</option>--%>
+<%--                                    <option value="option-4">Last 3 months</option>--%>
 
-                                </select>
-                            </div>
-                            <div class="col-auto">
-                                <a class="btn app-btn-secondary" href="#">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download me-1"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                              d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                                        <path fill-rule="evenodd"
-                                              d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                                    </svg>
-                                    Download CSV
-                                </a>
-                            </div>
-                        </div><!--//row-->
-                    </div><!--//table-utilities-->
-                </div><!--//col-auto-->
+<%--                                </select>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-auto">--%>
+<%--                                <a class="btn app-btn-secondary" href="#">--%>
+<%--                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download me-1"--%>
+<%--                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">--%>
+<%--                                        <path fill-rule="evenodd"--%>
+<%--                                              d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>--%>
+<%--                                        <path fill-rule="evenodd"--%>
+<%--                                              d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>--%>
+<%--                                    </svg>--%>
+<%--                                    Download CSV--%>
+<%--                                </a>--%>
+<%--                            </div>--%>
+<%--                        </div><!--//row-->--%>
+<%--                    </div><!--//table-utilities-->--%>
+<%--                </div><!--//col-auto-->--%>
             </div><!--//row-->
 
 
-            <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
-                <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab"
-                   href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">All</a>
-                <a class="flex-sm-fill text-sm-center nav-link" id="orders-paid-tab" data-bs-toggle="tab"
-                   href="#orders-paid" role="tab" aria-controls="orders-paid" aria-selected="false">Paid</a>
-                <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab"
-                   href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Pending</a>
-                <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"
-                   href="#orders-cancelled" role="tab" aria-controls="orders-cancelled"
-                   aria-selected="false">Cancelled</a>
-            </nav>
+<%--            <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">--%>
+<%--                <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab"--%>
+<%--                   href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">All</a>--%>
+<%--                <a class="flex-sm-fill text-sm-center nav-link" id="orders-paid-tab" data-bs-toggle="tab"--%>
+<%--                   href="#orders-paid" role="tab" aria-controls="orders-paid" aria-selected="false">Paid</a>--%>
+<%--                <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab"--%>
+<%--                   href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Pending</a>--%>
+<%--                <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab"--%>
+<%--                   href="#orders-cancelled" role="tab" aria-controls="orders-cancelled"--%>
+<%--                   aria-selected="false">Cancelled</a>--%>
+<%--            </nav>--%>
 
 
             <div class="tab-content" id="orders-table-tab-content">
@@ -85,20 +89,20 @@
                                     <tbody>
                                     <c:forEach items="${listProducts}" var="p">
                                         <tr>
-                                            <td class="cell">${p.product_id}</td>
+                                            <td class="cell" style="text-align: center">${p.product_id}</td>
                                             <td class="cell" style="width: 200px"><span
                                                     class="truncate">${p.product_name}</span></td>
 
                                             <c:forEach items="${category}" var="c">
                                                 <c:if test="${c.category_id == p.category_id}">
-                                                    <td><span class="truncate">${c.category_name}</span></td>
+                                                    <td class="cell"><span class="truncate">${c.category_name}</span></td>
                                                 </c:if>
                                             </c:forEach>
 
                                             <td class="cell">${p.product_price} đ</td>
 
                                             <td class="cell">${p.quantity}</td>
-                                            <td>
+                                            <td class="cell">
 
                                                 <c:forEach items="${psc}" var="psc">
                                                     <c:if test="${p.product_id == psc.product_id}">

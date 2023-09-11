@@ -38,4 +38,19 @@ public class ProductService implements IProductService {
     public List<Product> getProductByPrice(float minPrice, float maxPrice) {
         return productDAO.getProductByPrice(minPrice,maxPrice);
     }
+
+    @Override
+    public void addProduct(Product product) {
+        productDAO.addProduct(product);
+    }
+
+    @Override
+    public void editProduct(Product product) {
+        productDAO.editProduct(product);
+    }
+
+    @Override
+    public void deleteProduct(int id) {
+        productDAO.deleteProduct(id);
+    }
 }
