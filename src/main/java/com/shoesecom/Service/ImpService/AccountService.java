@@ -53,4 +53,12 @@ public class AccountService implements IAccountService {
     public List<Account> getAccountbyID(int account_id) {
         return accountDAO.getAccountbyID(account_id);
     }
+
+    @Override
+    public void changeStatusAccount(int account_id, String status) {
+        accountDAO.changeStatusAccount(account_id,status);
+
+    }
+
+
 }

@@ -29,37 +29,41 @@ public class LoginController extends HttpServlet {
         String password = request.getParameter("password");
 
         HttpSession session = request.getSession();
+
+
         boolean isValid = accountService.checkLogin(email,password);
         if(isValid){
             Account account = accountService.getAccountByEmail(email);
-//            session.setAttribute("account",account);
-//            session.setAttribute("email", email);
-//            session.setAttribute("name", account.getName());
-//            session.setAttribute("account_id", account.getAccount_id());
-            if (account.getRole().equals("admin")){
+                //check status
+            if (account.getStatus().equals("disable")){
+                request.setAttribute("errorMessage", "Tài khoản đã bị khoá.");
+                RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
+                rd.forward(request,response);
+
+            }
+            else if (account.getRole().equals("user")){
+                session.setAttribute("account", account);
+                RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+                rd.forward(request,response);
+                response.sendRedirect("web-home");
+            } else if (account.getRole().equals("admin")){
 //                Account admin = accountService.getAccountByEmail(email);
                 session.setAttribute("account",account);
                 RequestDispatcher rd = request.getRequestDispatcher("/views/admin/admin.jsp");
                 rd.forward(request,response);
                 response.sendRedirect("admin-home");
 
-            }else if (account.getRole().equals("user")){
-                session.setAttribute("account", account);
-                RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
-                rd.forward(request,response);
-                response.sendRedirect("web-home");
-            }
-            else {
+            }else {
                 RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
                 rd.forward(request,response);
             }
-        }
-        else {
+        } else {
             request.setAttribute("errorMessage", "Đăng nhập thất bại! <br> Vui lòng kiểm tra lại email và mật khẩu.");
 //            response.sendRedirect("login");
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
             rd.forward(request,response);
         }
+
 
 
 
