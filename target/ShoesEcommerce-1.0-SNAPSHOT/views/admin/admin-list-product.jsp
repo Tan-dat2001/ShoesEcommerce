@@ -12,11 +12,10 @@
         <div class="container-xl">
             <div class="row g-3 mb-4 align-items-center justify-content-between">
                 <div class="col-auto">
-<<<<<<< HEAD
+
                     <h1 class="app-page-title mb-0">Tất cả sản phẩm</h1>
-=======
-                    <h1 class="app-page-title mb-0">Sản Phẩm</h1>
->>>>>>> 19312d7a4b416cde6ce7648d33ef527e74a92359
+
+
                 </div>
 <%--                <div class="col-auto">--%>
 <%--                    <div class="page-utilities">--%>
