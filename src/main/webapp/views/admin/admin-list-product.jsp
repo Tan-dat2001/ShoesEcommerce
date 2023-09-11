@@ -15,7 +15,6 @@
 
                     <h1 class="app-page-title mb-0">Tất cả sản phẩm</h1>
 
-                    <h1 class="app-page-title mb-0">Sản Phẩm</h1>
 
                 </div>
 <%--                <div class="col-auto">--%>
