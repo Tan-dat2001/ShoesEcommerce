@@ -234,7 +234,8 @@ AccountDAO implements IAccountDAO {
     }
 
     @Override
-    public void updatePassword(Account account) {String sql = "UPDATE `account` SET " +
+    public void updatePassword(Account account) {
+        String sql = "UPDATE `account` SET " +
             "`password`=?  WHERE account_id =?";
         try {
             statement = DBConnect.getInstall().get();
@@ -250,8 +251,26 @@ AccountDAO implements IAccountDAO {
 
     }
 
+    @Override
+    public void changeStatusAccount(int account_id, String status) {
+        String sql = "UPDATE `account` SET `status`=? WHERE account_id = ?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+
+            ps.setString(1, status);
+            ps.setInt(2, account_id);
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+
     public static void main(String[] args) {
         AccountDAO acc = new AccountDAO();
+        acc.changeStatusAccount(1,"enable");
 
 
 
