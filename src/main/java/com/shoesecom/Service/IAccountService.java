@@ -14,4 +14,5 @@ public interface IAccountService {
     void updatePassword(Account account);
     List<Account> getAll();
     List<Account>getAccountbyID(int account_id);
+    void changeStatusAccount(int account_id, String status);
 }
