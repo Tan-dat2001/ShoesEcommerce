@@ -83,6 +83,7 @@
                                         <th class="cell">Status</th>
                                         <%--                                    <th class="cell">Mô tả</th>--%>
                                         <th class="cell">Ảnh</th>
+                                        <th class="cell">Tác vụ</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -115,11 +116,16 @@
                                                 </c:forEach>
                                             </td>
 
-
-                                            <td class="cell"><span class="badge bg-success">${p.status}</span></td>
-                                                <%--                                        <td class="cell" style="width: 300px">${p.product_desc}</td>--%>
+                                            <c:if test="${p.status == 'enabled'}">
+                                                <td class="cell"><span class="badge bg-success">${p.status}</span></td>
+                                            </c:if>
+                                            <c:if test="${p.status == 'disabled'}">
+                                                <td class="cell"><span class="badge bg-danger">${p.status}</span></td>
+                                            </c:if>
+                                                <%--<td class="cell" style="width: 300px">${p.product_desc}</td>--%>
                                             <td class="cell"><img style="width: 100px; height: 100px"
                                                                   src="${p.product_image}" alt=""></td>
+                                            <td class="cell"><a href="admin-edit-product?productId=${p.product_id}">Chỉnh sửa</a></td>
                                         </tr>
                                     </c:forEach>
 

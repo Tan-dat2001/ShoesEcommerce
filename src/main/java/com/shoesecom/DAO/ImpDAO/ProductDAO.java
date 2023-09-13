@@ -195,6 +195,22 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
+    public int searchNewestProduct() {
+        String sql = "select max(product_id) as product_id from product";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return rs.getInt("product_id");
+            }
+        }catch (SQLException e){
+            return 0;
+        }
+        return 0;
+    }
+
+    @Override
     public List<Product> getProductByPrice(float minPrice, float maxPrice) {
         List<Product> results = new ArrayList<>();
         String sql = "select * from product where product_price >= ? and product_price <= ?";
@@ -229,11 +245,12 @@ public class ProductDAO implements IProductDAO {
 
     @Override
     public void addProduct(Product product) {
-        String sql = "insert into product(category_id, discount_id, product_name, product_desc, product_price, product_image, quantity)"
-                + "values(?,?,?,?,?,?,?)";
-        try {
+        String insertProductSQL = "INSERT INTO product (category_id, discount_id, product_name, product_desc, product_price, product_image, quantity) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+
+        try{
             statement = DBConnect.getInstall().get();
-            ps = statement.getConnection().prepareStatement(sql);
+            ps = statement.getConnection().prepareStatement(insertProductSQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, product.getCategory_id());
             ps.setInt(2, product.getDiscount_id());
             ps.setString(3, product.getProduct_name());
@@ -242,13 +259,74 @@ public class ProductDAO implements IProductDAO {
             ps.setString(6, product.getProduct_image());
             ps.setInt(7, product.getQuantity());
             ps.executeUpdate();
-        }catch (SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
+            // Xử lý lỗi hoặc log lỗi ở đây
         }
+//        String sql = "insert into product(category_id, discount_id, product_name, product_desc, product_price, product_image, quantity)"
+//                + "values(?,?,?,?,?,?,?)";
+//        try {
+//            statement = DBConnect.getInstall().get();
+//            ps = statement.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            ps.setInt(1, product.getCategory_id());
+//            ps.setInt(2, product.getDiscount_id());
+//            ps.setString(3, product.getProduct_name());
+//            ps.setString(4, product.getProduct_desc());
+//            ps.setFloat(5, product.getProduct_price());
+//            ps.setString(6, product.getProduct_image());
+//            ps.setInt(7, product.getQuantity());
+//            ps.executeUpdate();
+//            ResultSet generateKeys = statement.getGeneratedKeys();
+//            if(generateKeys.next()){
+//                int productId = generateKeys.getInt(1);
+//                product.setProduct_id(productId);
+//            }
+//            generateKeys.close();
+//            ps.close();
+//            // Lấy id của product vừa add
+//            String sql1 = "select max(product_id) as product_id from product";
+//            PreparedStatement ps1 = statement.getConnection().prepareStatement(sql1);
+//            ResultSet rs1 = ps1.executeQuery();
+//            if(rs1.next()){
+//                int productId = rs1.getInt("product_id");
+//                String sql2 = "insert into psc(product_id) values(?)";
+//                PreparedStatement ps2 = statement.getConnection().prepareStatement(sql2);
+//                ps2.setInt(1, productId);
+//                ps2.executeUpdate();
+//
+//                String sql3 = "insert into image(product_id) values(?)";
+//                PreparedStatement ps3 = statement.getConnection().prepareStatement(sql3);
+//                ps3.setInt(1, productId);
+//                ps3.executeUpdate();
+//            }
+//            ps1.close();
+//            rs1.close();
+//        }catch (SQLException e){
+//            e.printStackTrace();
+//        }
     }
 
     @Override
     public void editProduct(Product product) {
+        String sql = "update product set category_id = ?, discount_id=?, product_name=?, product_desc=?, product_price=?, " +
+                "product_image=?, quantity=?, status=? where product_id=? ";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setInt(1, product.getCategory_id());
+            ps.setInt(2, product.getDiscount_id());
+            ps.setString(3, product.getProduct_name());
+            ps.setString(4,product.getProduct_desc());
+            ps.setFloat(5, product.getProduct_price());
+            ps.setString(6, product.getProduct_image());
+            ps.setInt(7, product.getQuantity());
+            ps.setString(8, product.getStatus());
+            ps.setInt(9, product.getProduct_id());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -263,7 +341,8 @@ public class ProductDAO implements IProductDAO {
 //        System.out.println(new ProductDAO().getProductById(1));
 //        System.out.println(new ProductDAO().searchProduct("Jordan"));
 
-        System.out.println(new ProductDAO().getProductByPrice(2000000,3000000));
-        new ProductDAO().addProduct(new Product(0,1,1,80,100,"Giày Dat","ABC","image1","enabled",60000,null,null,null,null));
+//        new ProductDAO().addProduct(new Product(0,1,0,20,100,"Giay New1","KKKKKKKKK","image1","enabled",200000,null,null,null,null));
+        System.out.println(new ProductDAO().searchNewestProduct());
+
     }
 }

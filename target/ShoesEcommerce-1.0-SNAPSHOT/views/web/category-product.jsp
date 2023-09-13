@@ -7,7 +7,6 @@
 <body id="category">
 
 
-
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
     <div class="container">
@@ -41,32 +40,32 @@
             </div>
             <div class="sidebar-filter mt-50">
                 <div class="top-filter-head">Product Filters</div>
-<%--                <div class="common-filter">--%>
-<%--                    <div class="head">Brands</div>--%>
-<%--                    <form action="#">--%>
-<%--                        <ul>--%>
-<%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>--%>
-<%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">Asus<span>(29)</span></label></li>--%>
-<%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>--%>
-<%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>--%>
-<%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>--%>
-<%--                        </ul>--%>
-<%--                    </form>--%>
-<%--                </div>--%>
-<%--                <div class="common-filter">--%>
-<%--                    <div class="head">Color</div>--%>
-<%--                    <form action="#">--%>
-<%--                        <ul>--%>
-<%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">Black<span>(29)</span></label></li>--%>
-<%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">Black--%>
-<%--                                Leather<span>(29)</span></label></li>--%>
-<%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="blackred" name="color"><label for="blackred">Black--%>
-<%--                                with red<span>(19)</span></label></li>--%>
-<%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="gold" name="color"><label for="gold">Gold<span>(19)</span></label></li>--%>
-<%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey" name="color"><label for="spacegrey">Spacegrey<span>(19)</span></label></li>--%>
-<%--                        </ul>--%>
-<%--                    </form>--%>
-<%--                </div>--%>
+                <%--                <div class="common-filter">--%>
+                <%--                    <div class="head">Brands</div>--%>
+                <%--                    <form action="#">--%>
+                <%--                        <ul>--%>
+                <%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>--%>
+                <%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">Asus<span>(29)</span></label></li>--%>
+                <%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>--%>
+                <%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>--%>
+                <%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>--%>
+                <%--                        </ul>--%>
+                <%--                    </form>--%>
+                <%--                </div>--%>
+                <%--                <div class="common-filter">--%>
+                <%--                    <div class="head">Color</div>--%>
+                <%--                    <form action="#">--%>
+                <%--                        <ul>--%>
+                <%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">Black<span>(29)</span></label></li>--%>
+                <%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">Black--%>
+                <%--                                Leather<span>(29)</span></label></li>--%>
+                <%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="blackred" name="color"><label for="blackred">Black--%>
+                <%--                                with red<span>(19)</span></label></li>--%>
+                <%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="gold" name="color"><label for="gold">Gold<span>(19)</span></label></li>--%>
+                <%--                            <li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey" name="color"><label for="spacegrey">Spacegrey<span>(19)</span></label></li>--%>
+                <%--                        </ul>--%>
+                <%--                    </form>--%>
+                <%--                </div>--%>
                 <div class="common-filter">
                     <div class="head">Price</div>
 
@@ -123,32 +122,31 @@
                     <!-- single product -->
 
                     <c:forEach items="${product}" var="p">
+                        <c:if test="${p.status == 'enabled'}">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-product">
+                                    <img class="img-fluid" style="height: 320px;" src="${p.product_image}" alt="">
+                                    <div class="product-details">
+                                        <h6>${p.product_name}</h6>
+                                        <div class="price">
+                                            <h6 class="formatted-price">${p.product_price}</h6>
+                                            <h6 class="l-through formatted-price">${p.product_price*1.2}</h6>
+                                        </div>
+                                        <div class="prd-bottom">
 
-
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" style="height: 320px;" src="${p.product_image}" alt="">
-                            <div class="product-details">
-                                <h6>${p.product_name}</h6>
-                                <div class="price">
-                                    <h6 class="formatted-price">${p.product_price}</h6>
-                                    <h6 class="l-through formatted-price">${p.product_price*1.2}</h6>
-                                </div>
-                                <div class="prd-bottom">
-
-<%--                                    <a href="addtocart?productId=${p.product_id}&quantity=1" class="social-info">--%>
-<%--                                        <span class="ti-bag"></span>--%>
-<%--                                        <p class="hover-text">Thêm vào giỏ</p>--%>
-<%--                                    </a>--%>
-                                    <a href="product-detail?productId=${p.product_id}" class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">Xem chi tiết</p>
-                                    </a>
+                                                <%--                                    <a href="addtocart?productId=${p.product_id}&quantity=1" class="social-info">--%>
+                                                <%--                                        <span class="ti-bag"></span>--%>
+                                                <%--                                        <p class="hover-text">Thêm vào giỏ</p>--%>
+                                                <%--                                    </a>--%>
+                                            <a href="product-detail?productId=${p.product_id}" class="social-info">
+                                                <span class="lnr lnr-move"></span>
+                                                <p class="hover-text">Xem chi tiết</p>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </c:if>
                     </c:forEach>
                 </div>
             </section>

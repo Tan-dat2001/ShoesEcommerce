@@ -4,6 +4,9 @@ public class Size {
     private int id;
     private int name;
 
+    public Size() {
+    }
+
     public Size(int id, int name) {
         this.id = id;
         this.name = name;
