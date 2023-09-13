@@ -146,7 +146,7 @@
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item">
                         <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                        <a class="nav-link active" href="/admin-home">
+                        <a class="nav-link" href="/admin-home">
 						        <span class="nav-icon">
 						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 		  <path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z"/>
@@ -233,8 +233,8 @@
                         </a><!--//nav-link-->
                         <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
                             <ul class="submenu-list list-unstyled">
-                                <li class="submenu-item"><a class="submenu-link" href="login.html">Danh sách danh mục</a></li>
-                                <li class="submenu-item"><a class="submenu-link" href="signup.html">Thêm danh mục</a></li>
+                                <li class="submenu-item"><a class="submenu-link" href="admin-list-category">Danh sách danh mục</a></li>
+                                <li class="submenu-item"><a class="submenu-link" href="admin-add-category">Thêm danh mục</a></li>
                             </ul>
                         </div>
                     </li><!--//nav-item-->
@@ -255,21 +255,21 @@
 	  <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
 	</svg>
 							        </span>
-                                <span class="nav-link-text">Settings</span>
+                                <span class="nav-link-text">Cài đặt</span>
                             </a><!--//nav-link-->
                         </li><!--//nav-item-->
-                        <li class="nav-item">
-                            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                            <a class="nav-link" href="#">
-							        <span class="nav-icon">
-							            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-	  <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-	  <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-	</svg>
-							        </span>
-                                <span class="nav-link-text">Download</span>
-                            </a><!--//nav-link-->
-                        </li><!--//nav-item-->
+<%--                        <li class="nav-item">--%>
+<%--                            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->--%>
+<%--                            <a class="nav-link" href="#">--%>
+<%--							        <span class="nav-icon">--%>
+<%--							            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">--%>
+<%--	  <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>--%>
+<%--	  <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>--%>
+<%--	</svg>--%>
+<%--							        </span>--%>
+<%--                                <span class="nav-link-text">Download</span>--%>
+<%--                            </a><!--//nav-link-->--%>
+<%--                        </li><!--//nav-item-->--%>
                         <li class="nav-item">
                             <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                             <a class="nav-link" href="log-out">
@@ -279,7 +279,7 @@
 	  <path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 	</svg>
 							        </span>
-                                <span class="nav-link-text">Logout</span>
+                                <span class="nav-link-text">Đăng xuất</span>
                             </a><!--//nav-link-->
                         </li><!--//nav-item-->
                     </ul>
