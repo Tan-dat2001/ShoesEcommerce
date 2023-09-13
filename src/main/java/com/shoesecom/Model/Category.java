@@ -69,4 +69,16 @@ public class Category {
     public void setUpdate_by(String update_by) {
         this.update_by = update_by;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "category_id=" + category_id +
+                ", category_name='" + category_name + '\'' +
+                ", create_at=" + create_at +
+                ", create_by='" + create_by + '\'' +
+                ", update_at=" + update_at +
+                ", update_by='" + update_by + '\'' +
+                '}';
+    }
 }

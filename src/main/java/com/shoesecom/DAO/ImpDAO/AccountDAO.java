@@ -270,7 +270,7 @@ AccountDAO implements IAccountDAO {
 
     public static void main(String[] args) {
         AccountDAO acc = new AccountDAO();
-        acc.changeStatusAccount(1,"enable");
+        acc.getAll();
 
 
 
