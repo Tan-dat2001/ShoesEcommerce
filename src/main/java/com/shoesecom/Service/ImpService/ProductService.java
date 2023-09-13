@@ -1,7 +1,10 @@
 package com.shoesecom.Service.ImpService;
 
 import com.shoesecom.DAO.IProductDAO;
+import com.shoesecom.Model.Image;
+import com.shoesecom.Model.PSC;
 import com.shoesecom.Model.Product;
+import com.shoesecom.Model.Size;
 import com.shoesecom.Service.IProductService;
 
 import javax.inject.Inject;
@@ -32,6 +35,11 @@ public class ProductService implements IProductService {
     @Override
     public List<Product> searchProduct(String keyword) {
         return productDAO.searchProduct(keyword);
+    }
+
+    @Override
+    public int searchNewestProduct() {
+        return productDAO.searchNewestProduct();
     }
 
     @Override

@@ -19,17 +19,12 @@ public class AdminChangeStatusAccount extends HttpServlet {
         if (status.equals("disable")){
             accountService.changeStatusAccount(account_id,"enable");
             response.sendRedirect("admin-list-account");
-
         }else {
             accountService.changeStatusAccount(account_id,"disable");
 //            RequestDispatcher rd = request.getRequestDispatcher("/views/admin/admin-list-account.jsp");
 //            rd.forward(request,response);
             response.sendRedirect("admin-list-account");
-
         }
-
-
-
     }
 
     @Override

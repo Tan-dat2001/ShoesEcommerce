@@ -61,11 +61,8 @@
                         <th class="cell">Sinh nhật</th>
                         <th class="cell">Địa chỉ</th>
                         <th class="cell">SĐT</th>
-
                         <th class="cell">Quyền</th>
                         <th class="cell">Mở/Khoá</th>
-
-
                     </tr>
                     </thead>
                     <tbody>
@@ -100,11 +97,6 @@
                                 </c:choose>
 
                             </td>
-
-
-
-
-
                         </tr>
                     </c:forEach>
 

@@ -71,7 +71,18 @@ public class ImageDAO implements IImageDAO {
 
     @Override
     public void editImage(Image image) {
-
+        String sql = "update image set image1=?, image2=?, image3=? where product_id=?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setString(1, image.getImage1());
+            ps.setString(2, image.getImage2());
+            ps.setString(3, image.getImage3());
+            ps.setInt(4, image.getProduct_id());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override

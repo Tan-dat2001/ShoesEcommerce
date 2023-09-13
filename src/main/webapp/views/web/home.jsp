@@ -51,30 +51,30 @@
             <div class="row">
                 <!-- single product -->
                 <c:forEach items="${listProducts}" var="p">
-                    <div class="col-lg-4 col-md-6">
-
-                        <div class="single-product">
-                            <img class="img-fluid single-product-image" src="${p.product_image}" alt="">
-                            <div class="product-details">
-                                <h6>${p.product_name}</h6>
-                                <div class="price">
-                                    <h6 class="formatted-price">${p.product_price} đ</h6>
-                                    <h6  class="l-through formatted-price">${p.product_price*1.2} đ</h6>
-                                </div>
-                                <div class="prd-bottom">
-
-<%--                                    <a href="addtocart?productId=${p.product_id}&quantity=1" class="social-info">--%>
-<%--                                        <span class="ti-bag"></span>--%>
-<%--                                        <p class="hover-text">Thêm vào giỏ</p>--%>
-<%--                                    </a>--%>
-                                    <a href="product-detail?productId=${p.product_id}" class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">Xem chi tiết</p>
-                                    </a>
+                    <c:if test="${p.status == 'enabled'}">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-product">
+                                <img class="img-fluid single-product-image" src="${p.product_image}" alt="">
+                                <div class="product-details">
+                                    <h6>${p.product_name}</h6>
+                                    <div class="price">
+                                        <h6 class="formatted-price">${p.product_price} đ</h6>
+                                        <h6  class="l-through formatted-price">${p.product_price*1.2} đ</h6>
+                                    </div>
+                                    <div class="prd-bottom">
+                                            <%--                                    <a href="addtocart?productId=${p.product_id}&quantity=1" class="social-info">--%>
+                                            <%--                                        <span class="ti-bag"></span>--%>
+                                            <%--                                        <p class="hover-text">Thêm vào giỏ</p>--%>
+                                            <%--                                    </a>--%>
+                                        <a href="product-detail?productId=${p.product_id}" class="social-info">
+                                            <span class="lnr lnr-move"></span>
+                                            <p class="hover-text">Xem chi tiết</p>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </c:if>
                 </c:forEach>
 
             </div>

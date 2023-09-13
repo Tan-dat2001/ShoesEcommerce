@@ -83,7 +83,17 @@ public class PscDAO implements IPscDAO {
 
     @Override
     public void editPSC(PSC psc) {
-
+        String sql= "update psc set quantity=? where product_id=? and size_id=?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setInt(1, psc.getQuantity());
+            ps.setInt(2, psc.getProduct_id());
+            ps.setInt(3, psc.getSize_id());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override

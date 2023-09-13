@@ -28,8 +28,10 @@ public class PscService implements IPscService {
 
     @Override
     public void editPSC(PSC psc) {
+//        pscDAO.editPSC(productId,sizeId,quantity);
         pscDAO.editPSC(psc);
     }
+
 
     @Override
     public void deletePSC(int id) {
