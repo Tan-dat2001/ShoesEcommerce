@@ -29,9 +29,10 @@
                                 <div class="form-group">
 
                                     <label>Tên danh mục</label>
-                                    <input class="input-custom" type="text" name="category_name">
+                                    <input class="input-custom" type="text" name="category_name" required>
                                 </div>
                             </div>
+
 
                                 <div class="form-group">
                                     <button type="submit" class="btn-submit">Thêm mới</button>
