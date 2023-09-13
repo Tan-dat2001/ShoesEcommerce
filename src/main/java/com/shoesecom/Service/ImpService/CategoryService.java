@@ -14,4 +14,26 @@ public class CategoryService implements ICategoryService {
     public List<Category> getAllCategory() {
         return categoryDAO.getAllCategory();
     }
+
+    @Override
+    public Category getCategoryByID(int category_id) {
+        return categoryDAO.getCategoryByID(category_id);
+    }
+
+
+    @Override
+    public void deleteCategory(int category_id) {
+        categoryDAO.deleteCategory(category_id);
+    }
+
+    @Override
+    public void addCategory(Category category) {
+        categoryDAO.addCategory(category);
+    }
+
+    @Override
+    public void updateCategory(Category category) {
+        categoryDAO.updateCategory(category);
+
+    }
 }
