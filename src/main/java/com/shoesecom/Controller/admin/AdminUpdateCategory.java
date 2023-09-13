@@ -14,11 +14,12 @@ import java.util.List;
 public class AdminUpdateCategory extends HttpServlet {
     @Inject
     private ICategoryService categoryService;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int category_id = Integer.parseInt(request.getParameter("category_id"));
-        Category  c = categoryService.getCategoryByID(category_id);
-        request.setAttribute("c",c);
+        Category c = categoryService.getCategoryByID(category_id);
+        request.setAttribute("c", c);
         request.getRequestDispatcher("views/admin/admin-update-category.jsp").forward(request, response);
 
     }
@@ -29,12 +30,11 @@ public class AdminUpdateCategory extends HttpServlet {
 
         int category_id = Integer.parseInt(request.getParameter("category_id"));
         String category_name = request.getParameter("category_name");
-        Category category = new Category(category_id,category_name,null,null,null,null);
+        Category category = new Category(category_id, category_name, null, null, null, null);
 
         categoryService.updateCategory(category);
         request.getRequestDispatcher("views/admin/admin-list-category.jsp").forward(request, response);
         response.sendRedirect("admin-list-category");
-
 
     }
 }
