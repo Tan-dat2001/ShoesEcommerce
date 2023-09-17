@@ -22,8 +22,9 @@
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label>Tên danh mục</label>
+
                                     <input class="input-custom" type="hidden" name="category_id" value="${c.category_id}">
-                                    <input class="input-custom" type="text" name="category_name" value="${c.category_name}">
+                                    <input class="input-custom" type="text" name="category_name" value="${c.category_name}" required>
                                 </div>
                             </div>
 

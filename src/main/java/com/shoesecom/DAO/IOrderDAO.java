@@ -7,7 +7,9 @@ import com.shoesecom.Model.Order;
 import java.util.List;
 
 public interface IOrderDAO {
-    List<Order> getAllOrder();
+    List<Order> getAll();
+
+    List<Order> getOrderByID(int order_id);
 
     List<Order> getAllOrderByAccountId(int id);
 
