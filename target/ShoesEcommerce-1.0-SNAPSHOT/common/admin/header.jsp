@@ -156,24 +156,20 @@
                             <span class="nav-link-text">Tổng quan</span>
                         </a><!--//nav-link-->
                     </li><!--//nav-item-->
-<%--                    <li class="nav-item">--%>
-<%--                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->--%>
-<%--                        <a class="nav-link" href="docs.html">--%>
-<%--						        <span class="nav-icon">--%>
-<%--						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor" xmlns="http://www.w3.org/2000/svg">--%>
-<%--  <path d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"/>--%>
-<%--  <path fill-rule="evenodd" d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"/>--%>
-<%--</svg>--%>
-<%--						         </span>--%>
-<%--                            <span class="nav-link-text">Docs</span>--%>
-<%--                        </a><!--//nav-link-->--%>
-<%--                    </li><!--//nav-item-->--%>
+                    <li class="nav-item">
+                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link" href="admin-list-order">
+						        <span class="nav-icon">
 
-<%--                    Quản lý sản phẩn --%>
-
-<%--                            <span class="nav-link-text">Trang Chủ</span>--%>
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-bag-heart-fill" viewBox="0 0 16 16">
+  <path d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5ZM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1Zm0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
+</svg>
+						         </span>
+                            <span class="nav-link-text">Quản lý đơn hàng</span>
                         </a><!--//nav-link-->
                     </li><!--//nav-item-->
+
+
                     <li class="nav-item">
                         <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link" href="admin-list-account">
