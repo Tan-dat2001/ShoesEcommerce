@@ -63,4 +63,16 @@ public class Info_delivery {
     public void setNote(String note) {
         this.note = note;
     }
+
+    @Override
+    public String toString() {
+        return "Info_delivery{" +
+                "info_id=" + info_id +
+                ", order_id=" + order_id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", note='" + note + '\'' +
+                '}' +"\n";
+    }
 }

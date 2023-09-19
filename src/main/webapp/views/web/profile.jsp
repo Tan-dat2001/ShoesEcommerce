@@ -37,7 +37,7 @@
     </div>
 </section>
 <!-- End Banner Area -->
-<div class="container" style="padding: 0">
+<div class="container" style="padding: 0;margin: 60px auto;">
 
     <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
@@ -48,6 +48,7 @@
 
                     <li class="main-nav-list">
                         <a href="web-profile">Thông tin tài khoản</a>
+                        <a href="your-order">Đơn hàng của bạn</a>
                         <a href="update-pass">Đổi mật khẩu</a>
                         <a href="log-out">Đăng xuất</a>
                     </li>

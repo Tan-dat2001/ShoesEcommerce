@@ -1,6 +1,8 @@
 package com.shoesecom.Service.ImpService;
 
 import com.shoesecom.DAO.IOrderDAO;
+import com.shoesecom.Model.Account;
+import com.shoesecom.Model.Cart;
 import com.shoesecom.Model.Order;
 import com.shoesecom.Service.IOrderService;
 
@@ -18,6 +20,16 @@ public class OrderService implements IOrderService {
     @Override
     public List<Order> getOrderByID(int order_id) {
         return orderDAO.getOrderByID(order_id);
+    }
+
+    @Override
+    public List<Order> getAllOrderByAccountId(int id) {
+        return orderDAO.getAllOrderByAccountId(id);
+    }
+
+    @Override
+    public void addOrder(Account account, Cart cart, Order order) {
+        orderDAO.addOrder(account,cart,order);
     }
 
 }

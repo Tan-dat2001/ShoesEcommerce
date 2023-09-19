@@ -13,6 +13,11 @@ public class Item {
         this.price = price;
         this.size = size;
     }
+    //lấy tổng tiền của 1 item
+    public float getTotalAmount(){
+        return price*quantity;
+    }
+
 
     public Product getProduct() {
         return product;

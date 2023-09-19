@@ -2,12 +2,13 @@ package com.shoesecom.Model;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Order {
     private int order_id, account_id, payment_id,delivery_id,status_id;
     private String payment_transaction,order_note;
     private float total_amount;
-    private Date order_date;
+    private LocalDateTime order_date;
     private Timestamp createAt;
     private String createBy;
     private Timestamp updateAt;
@@ -16,7 +17,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(int order_id, int account_id, int payment_id, int delivery_id, int status_id, String payment_transaction, String order_note, float total_amount, Date order_date, Timestamp createAt, String createBy, Timestamp updateAt, String updateBy) {
+    public Order(int order_id, int account_id, int payment_id, int delivery_id, int status_id, String payment_transaction, String order_note, float total_amount, LocalDateTime order_date, Timestamp createAt, String createBy, Timestamp updateAt, String updateBy) {
         this.order_id = order_id;
         this.account_id = account_id;
         this.payment_id = payment_id;
@@ -96,11 +97,11 @@ public class Order {
         this.total_amount = total_amount;
     }
 
-    public Date getOrder_date() {
+    public LocalDateTime getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(Date order_date) {
+    public void setOrder_date(LocalDateTime order_date) {
         this.order_date = order_date;
     }
 
@@ -134,5 +135,24 @@ public class Order {
 
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "order_id=" + order_id +
+                ", account_id=" + account_id +
+                ", payment_id=" + payment_id +
+                ", delivery_id=" + delivery_id +
+                ", status_id=" + status_id +
+                ", payment_transaction='" + payment_transaction + '\'' +
+                ", order_note='" + order_note + '\'' +
+                ", total_amount=" + total_amount +
+                ", order_date=" + order_date +
+                ", createAt=" + createAt +
+                ", createBy='" + createBy + '\'' +
+                ", updateAt=" + updateAt +
+                ", updateBy='" + updateBy + '\'' +
+                '}' + "\n";
     }
 }

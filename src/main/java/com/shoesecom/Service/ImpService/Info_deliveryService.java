@@ -11,10 +11,13 @@ public class Info_deliveryService implements IInfo_deliveryService {
     @Inject
     private IInfo_DeliveyDAO info_deliveyDAO;
 
-
-
     @Override
     public List<Info_delivery> getInfoByOrderID(int order_id) {
         return info_deliveyDAO.getInfoByOrderID(order_id);
+    }
+
+    @Override
+    public void addInfoDelivery(Info_delivery infoDelivery) {
+        info_deliveyDAO.addInfoDelivery(infoDelivery);
     }
 }
