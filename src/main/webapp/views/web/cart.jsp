@@ -27,6 +27,7 @@
     <div class="container">
         <div class="cart_inner">
             <div class="table-responsive">
+                <form action="checkout" method="get">
                 <table class="table">
                     <thead>
                     <tr>
@@ -39,51 +40,49 @@
                     </tr>
                     </thead>
                     <tbody>
-
-                    <c:set var="o" value="${sessionScope.cart}" />
-                    <c:forEach var="i" items="${o.items}" >
-                        <tr class="product-item-custom">
-                            <td>
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="${i.product.product_image}" alt="Ảnh giày" class="img-custom">
+                        <c:set var="o" value="${sessionScope.cart}" />
+                        <c:forEach var="i" items="${o.items}" >
+                            <tr class="product-item-custom">
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="${i.product.product_image}" alt="Ảnh giày" class="img-custom">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>${i.product.product_name}</p>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <p>${i.product.product_name}</p>
+                                </td>
+                                <td>
+                                    <h5>${i.size}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="product-price" >${i.product.product_price} đ</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        <input type="text" name="quantity" id="sst" maxlength="12" value="${i.quantity}" title="Quantity:"
+                                               class="input-text qty">
+                                        <button class="increase items-count increase-custom" type="button">
+                                            <a href="processNum?num=1&productId=${i.product.product_id}&size=${i.size}"><i class="lnr lnr-chevron-up"></i></a>
+                                        </button>
+                                        <button class="reduced items-count reduced-custom" type="button">
+                                            <a href="processNum?num=-1&productId=${i.product.product_id}&size=${i.size}"><i class="lnr lnr-chevron-down"></i></a>
+                                        </button>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <h5>${i.size}</h5>
-                            </td>
-                            <td>
-                                <h5 class="product-price" >${i.product.product_price} đ</h5>
-                            </td>
-                            <td>
-                                <div class="product_count">
-                                    <input type="text" name="qty" id="sst" maxlength="12" value="${i.quantity}" title="Quantity:"
-                                           class="input-text qty">
-                                    <button class="increase items-count increase-custom" type="button">
-                                        <i class="lnr lnr-chevron-up"></i>
-                                    </button>
-                                    <button class="reduced items-count reduced-custom" type="button">
-                                        <i class="lnr lnr-chevron-down"></i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td>
-<%--                                <h5 class="total-price" >${i.product.product_price*i.quantity} đ</h5>--%>
-                                <h5 class="total-price" ></h5>
+                                </td>
+                                <td>
+    <%--                                <h5 class="total-price" >${i.product.product_price*i.quantity} đ</h5>--%>
+                                    <h5 class="total-price" >${i.price*i.quantity}</h5>
 
-                            </td>
-                            <td style="text-align: center;">
-                                <a class="remove-custom" href="process-cart?productId=${i.product.product_id}">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-
+                                </td>
+                                <td style="text-align: center;">
+                                    <a class="remove-custom" href="process-cart?productId=${i.product.product_id}">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
 <%--                <h2>${messageCart}</h2>--%>
@@ -92,98 +91,28 @@
 <%--                    <c:set var="total" value="${total + i.product.product_price*i.quantity}"/>--%>
 <%--                </c:forEach>--%>
                 <div class="sub-total">
-                    <h5 >Tổng tạm tính: <span id="total-amount"></span></h5>
+                    <h5 >Tổng tạm tính:
+                        <c:set var="o" value="${sessionScope.cart}"/>
+                        <c:set var="total" value="0"/>
+                        <c:forEach var="i" items="${o.items}">
+                            <c:set var="itemTotal" value="${i.product.product_price * i.quantity}" />
+                            <c:set var="total" value="${total + itemTotal}" />
+                        </c:forEach>
+                        <span id="total-amount">${total}</span>
+                    </h5>
                 </div>
 
                 <div class="checkout_btn_inner d-flex align-items-center proceed-custom">
                     <a class="gray_btn" href="web-home">Tiếp tục mua sắm</a>
-                    <a class="primary-btn" href="checkout">Thanh toán</a>
+                    <button class="primary-btn" href="checkout" type="submit" style="border: none">Thanh toán</button>
                 </div>
+                </form>
 
             </div>
         </div>
     </div>
 </section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var productItems = document.querySelectorAll('.product-item-custom');
-        // var priceItems = document.querySelectorAll('.total-price');
-        var totalAmountElement = document.getElementById('total-amount');
-
-        // Tạo một mảng lưu giá tiền của từng sản phẩm
-        var productPrices = [];
-        var totalPrices = [];
-        productItems.forEach(function(item) {
-            var quantityInput = item.querySelector('.qty');
-            var increaseButton = item.querySelector('.increase');
-            var reduceButton = item.querySelector('.reduced');
-            var priceElement = item.querySelector('.product-price');
-            var totalPriceElement = item.querySelector('.total-price');
-
-            // Lấy giá tiền ban đầu của sản phẩm
-            var price = parseFloat(priceElement.textContent.replace('0 đ', '').replace(/\./g, '').replace(',', '.'));
-            var totalPrice =parseFloat(priceElement.textContent.replace('0 đ', '').replace(/\./g, '').replace(',', '.'));
-            priceElement.textContent = formatCurrency(price);
-            // totalPriceElement.textContent = formatCurrency(totalPrice);
-            //thêm giá của item vào mảng
-            productPrices.push(price);
-            //cập nhật tổng giá tiền của item
-            updateTotalPrice(priceElement,totalPriceElement,quantityInput.value);
-
-            //đặt biết gán tổng giá trị của 1 item
-            let priceEle = 0;
-            for(let i=0; i<quantityInput.value;i++){
-                priceEle += price;
-                totalPrices.push(priceEle); //thêm vào mảng
-            }
-            updateTotalAmount(totalPrices);
-
-            increaseButton.addEventListener('click', function() {
-                var currentQuantity = parseInt(quantityInput.value);
-                if (!isNaN(currentQuantity)) {
-                    quantityInput.value = currentQuantity + 1;
-                    updateTotalPrice(priceElement, totalPriceElement, quantityInput.value);
-                    let price = parseFloat(priceElement.textContent.replace('0 đ', '').replace(/\./g, '').replace(',', '.'));
-                    totalPrices.push(price);
-                    updateTotalAmount(totalPrices);
-                }
-            });
-
-            reduceButton.addEventListener('click', function() {
-                var currentQuantity = parseInt(quantityInput.value);
-                if (!isNaN(currentQuantity) && currentQuantity > 1) {
-                    quantityInput.value = currentQuantity - 1;
-                    updateTotalPrice(priceElement, totalPriceElement, quantityInput.value);
-                    // let price = parseFloat(priceElement.textContent.replace('0 đ', '').replace(/\./g, '').replace(',', '.'));
-                    totalPrices.pop();
-                    updateTotalAmount(totalPrices);
-                }
-            });
-        });
-
-        function updateTotalPrice(priceElement, totalPriceElement, quantity) {
-            var price = parseFloat(priceElement.textContent.replace('0 đ', '').replace(/\./g, '').replace(',', '.'));
-            if (!isNaN(price)) {
-                var total = price * quantity;
-                totalPriceElement.textContent = formatCurrency(total);
-            }
-        }
-
-        function updateTotalAmount(prices) {
-            var total = prices.reduce(function(sum, price) {
-                return sum + price;
-            }, 0);
-            totalAmountElement.textContent = formatCurrency(total);
-        }
-
-
-        function formatCurrency(amount) {
-            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', minimumFractionDigits:0}).format(amount);
-        }
-    });
-
-</script>
 <!--================End Cart Area =================-->
 </body>
 </html>

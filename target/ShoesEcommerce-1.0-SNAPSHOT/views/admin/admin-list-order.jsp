@@ -105,7 +105,7 @@
 <%--                                        </c:if>--%>
                                             <%--<td class="cell" style="width: 300px">${p.product_desc}</td>--%>
 
-                                        <td class="cell"><a href="admin-list-detail?orderId=${o.order_id}">Xem</a>|
+                                        <td class="cell"><a href="admin-list-detail?orderId=${o.order_id}">Xem</a>
 
                                         </td>
                                     </tr>

@@ -16,7 +16,7 @@
                 <nav class="d-flex align-items-center">
                     <a href="web-home">Home<span class="lnr lnr-arrow-right"></span></a>
                     <a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="single-product.html">product-details</a>
+                    <a href="#">product-details</a>
                 </nav>
             </div>
         </div>

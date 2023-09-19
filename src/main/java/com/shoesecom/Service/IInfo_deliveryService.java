@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface IInfo_deliveryService {
     List<Info_delivery> getInfoByOrderID(int order_id);
+
+    void addInfoDelivery(Info_delivery infoDelivery);
+
 }

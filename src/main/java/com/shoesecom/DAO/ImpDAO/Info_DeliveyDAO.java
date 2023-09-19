@@ -43,4 +43,21 @@ public class Info_DeliveyDAO implements IInfo_DeliveyDAO {
         return list;
 
     }
+
+    @Override
+    public void addInfoDelivery(Info_delivery infoDelivery) {
+        String sql = "insert into info_delivery(order_id, name, phone, address, note) values(?,?,?,?,?)";
+        try{
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+            ps.setInt(1, infoDelivery.getOrder_id());
+            ps.setString(2, infoDelivery.getName());
+            ps.setString(3, infoDelivery.getPhone());
+            ps.setString(4, infoDelivery.getAddress());
+            ps.setString(5, infoDelivery.getNote());
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

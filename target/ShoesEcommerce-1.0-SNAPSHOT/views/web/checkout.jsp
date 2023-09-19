@@ -19,8 +19,8 @@
             <div class="col-first">
                 <h1>Checkout</h1>
                 <nav class="d-flex align-items-center">
-                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="single-product.html">Checkout</a>
+                    <a href="web-home">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Checkout</a>
                 </nav>
             </div>
         </div>
@@ -30,30 +30,30 @@
 <!--================Checkout Area =================-->
 <section class="checkout_area section_gap">
     <div class="container">
-
         <div class="billing_details">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h3>Thông tin người nhận</h3>
-                    <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+            <form action="checkout" method="post">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3>Thông tin người nhận</h3>
                         <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="first" name="name">
-                            <span class="placeholder" data-placeholder="Tên"></span>
-                        </div>
-                        <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="number" name="number">
-                            <span class="placeholder" data-placeholder="Số điện thoại"></span>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <input type="text" class="form-control" id="email" name="compemailany" placeholder="Email">
+                            <input type="text" class="form-control" id="first" name="name" placeholder="Họ tên"
+                                   required>
                         </div>
                         <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="add1" name="add1">
-                            <span class="placeholder" data-placeholder="Địa chỉ"></span>
+                            <input type="text" class="form-control" id="number" name="number" placeholder="phone"
+                                   required>
+                        </div>
+<%--                        <div class="col-md-6 form-group">--%>
+<%--                            <input type="text" class="form-control" id="email" name="email" placeholder="Email">--%>
+<%--                        </div>--%>
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" id="add1" name="address" placeholder="Địa chỉ"
+                                   required>
                         </div>
 
                         <div class="col-md-12 form-group">
-                            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Ghi chú"></textarea>
+                            <textarea class="form-control" name="note" id="message" rows="1" placeholder="Ghi chú"
+                                      style="height: 60px;"></textarea>
                         </div>
 
                         <div class="col-md-12 form-group">
@@ -61,49 +61,58 @@
                                 color: #222222;
                                 border-bottom: 1px solid #eee;
                                 padding-bottom: 10px;
-                                margin-bottom: 20px;">Phương thức vận chuyển</div>
+                                margin-bottom: 20px;">Phương thức vận chuyển
+                            </div>
                             <div class="delivery-method" style="font-size: 16px;">
-                                <input type="radio" name="fast-delivery" value="GHN" id="fastDelivery">
-                                <label for="fastDelivery">Giao hàng nhanh</label>
-                                <br>
-                                <input type="radio" name="standard-delivery" value="GHTC" id="standardDelivery">
-                                <label for="standardDelivery">Giao hàng tiêu chuẩn</label>
+                                <c:forEach var="delivery" items="${listDelivery}">
+                                    <input type="radio" name="delivery" value="${delivery.delivery_id}"
+                                           id="${delivery.delivery_id}">
+                                    <label for="${delivery.delivery_id}">${delivery.delivery_name} <span
+                                            style="margin-left: 150px;">${delivery.delivery_price}</span></label>
+                                    <br>
+                                </c:forEach>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="col-lg-4">
-                    <div class="order_box">
-                        <h2>Đơn hàng của bạn</h2>
-                        <div class="rounded p-2">
-                            <div class="media mb-2 ">
-                                <div class="row">
-                                    <c:set var="o" value="${sessionScope.cart}"/>
-                                    <c:forEach var="i" items="${o.items}">
-                                        <div class="col-lg-12 border-bottom mb-2" >
-                                            <a class="row" href="" style="margin: 0 0 8px 0;font-size: 18px; color: #111111; font-weight: 500;">${i.product.product_name}</a>
-                                            <div class="small text-muted row" style="font-size: 14px;">
-                                                <p class="col-md-8">Giá: ${i.price}</p>
-                                                <p class="col-md-4">Sl: x${i.quantity} </p>
-                                                <p class="col-md-8">Tổng: ${i.price*i.quantity} đ</p>
-                                                <p class="col-md-4">Size: ${i.size}</p>
-
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="order_box">
+                            <h2>Đơn hàng của bạn</h2>
+                            <div class="rounded p-2">
+                                <div class="media mb-2 ">
+                                    <div class="row">
+                                        <c:set var="o" value="${sessionScope.cart}"/>
+                                        <c:forEach var="i" items="${o.items}">
+                                            <div class="col-lg-12 border-bottom mb-2">
+                                                <a class="row" href=""
+                                                   style="margin: 0 0 8px 0;font-size: 18px; color: #111111; font-weight: 500;">${i.product.product_name}</a>
+                                                <div class="small text-muted row" style="font-size: 14px;">
+                                                    <p class="col-md-8">Giá: ${i.price}</p>
+                                                    <p class="col-md-4">Sl: x${i.quantity} </p>
+                                                    <p class="col-md-8">Tổng: ${i.price*i.quantity} đ</p>
+                                                    <p class="col-md-4">Size: ${i.size}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </c:forEach>
+                                        </c:forEach>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <ul class="list list_2">
-                            <li><a href="#">Tổng tạm tính <span>$2160.00</span></a></li>
-                            <li><a href="#">Chi phí vận chuyển <span>Flat rate: $50.00</span></a></li>
-                            <li><a href="#">Tổng đơn hàng <span>$2210.00</span></a></li>
-                        </ul>
+                            <ul class="list list_2">
+                                <c:set var="o" value="${sessionScope.cart}"/>
+                                <c:set var="total" value="0"/>
+                                <c:forEach var="i" items="${o.items}">
+                                    <c:set var="itemTotal" value="${i.product.product_price * i.quantity}"/>
+                                    <c:set var="total" value="${total + itemTotal}"/>
+                                </c:forEach>
+                                <li><a href="#">Tổng tạm tính <span>${total}</span></a></li>
+                                <li><a href="#">Chi phí vận chuyển <span>Flat rate: $50.00</span></a></li>
+                                <li><a href="#">Tổng đơn hàng <span>$2210.00</span></a></li>
+                            </ul>
 
-                        <a class="primary-btn" href="#">Thanh Toán</a>
+                            <button class="primary-btn" type="submit" style="border: none;">Thanh Toán</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>
