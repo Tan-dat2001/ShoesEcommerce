@@ -1,5 +1,6 @@
 package com.shoesecom.Controller;
 
+import com.shoesecom.DAO.ImpDAO.Info_DeliveyDAO;
 import com.shoesecom.Model.*;
 import com.shoesecom.Service.IDetailService;
 import com.shoesecom.Service.IInfo_deliveryService;
@@ -30,14 +31,18 @@ public class YourOrderPageController extends HttpServlet {
         Account account = (Account)session.getAttribute("account");
         List<Order> listOrder = orderService.getAllOrderByAccountId(account.getAccount_id());
         request.setAttribute("listOrder",listOrder);
+        List<Info_delivery> infoDeliveries = new ArrayList<>();
+        Info_delivery infoDelivery = new Info_delivery();
+        Info_DeliveyDAO infoDeliveyDAO = new Info_DeliveyDAO();
         for(Order order:listOrder){
             //Lấy thông tin đơn hàng
             List<Detail> listOrderDetail = detailService.getDetailByID(order.getOrder_id());
             request.setAttribute("listOrderDetail",listOrderDetail);
             //Vận chuyển
-            List<Info_delivery> infoDelivery = infoDeliveryService.getInfoByOrderID(order.getOrder_id());
-            request.setAttribute("infoDelivery",infoDelivery);
-            System.out.println(infoDelivery);
+            infoDelivery = infoDeliveryService.getInfoByOrderID(order.getOrder_id());
+            infoDeliveries.add(infoDelivery);
+            request.setAttribute("infoDeliveries",infoDeliveries);
+            //            System.out.println(infoDelivery);
             //Trạng thái đơn hàng
             List<Order_status> orderStatus = statusService.getStatusByID(order.getStatus_id());
             request.setAttribute("orderStatus",orderStatus);

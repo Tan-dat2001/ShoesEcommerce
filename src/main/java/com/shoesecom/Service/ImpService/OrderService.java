@@ -18,7 +18,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<Order> getOrderByID(int order_id) {
+    public Order getOrderByID(int order_id) {
         return orderDAO.getOrderByID(order_id);
     }
 
