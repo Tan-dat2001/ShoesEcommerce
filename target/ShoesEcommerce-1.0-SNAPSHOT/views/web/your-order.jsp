@@ -42,21 +42,17 @@
 
             <div class="content-panel">
                 <c:forEach var="o" items="${listOrder}">
-                    <%-- 							<c:set var="info" value="${infoDelivery}" /> --%>
                     <div class="bg-white card mb-4 order-list shadow-sm">
                         <div class="gold-members p-4">
                             <a href="#"> </a>
                             <div class="media">
-                                <!-- <a href="#"> <img class="mr-4" src="images/aothun1.jpg"
-                                    alt="Generic placeholder image">
-                                </a> -->
                                 <div class="media-body">
                                     <a href="#">
                             <span class="float-right text-info">Mã đơn hàng: #${o.order_id}
                                 <i class="icofont-check-circled text-success"></i>
                             </span>
                                     </a>
-                                    <c:forEach var="info" items="${infoDelivery}">
+                                    <c:forEach var="info" items="${infoDeliveries}">
                                         <c:if test="${o.order_id == info.order_id}">
                                             <h3 class="mb-2" style="font-weight:bold;"> Người nhận: ${info.name}</h3>
                                             <p class="mb-1">Số điện thoại: ${info.phone}</p>

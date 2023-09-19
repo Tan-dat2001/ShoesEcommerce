@@ -2,7 +2,6 @@ package com.shoesecom.DAO.ImpDAO;
 
 import com.shoesecom.DAO.IInfo_DeliveyDAO;
 import com.shoesecom.DbConnect.DBConnect;
-import com.shoesecom.Model.Detail;
 import com.shoesecom.Model.Info_delivery;
 
 import java.sql.PreparedStatement;
@@ -20,8 +19,7 @@ public class Info_DeliveyDAO implements IInfo_DeliveyDAO {
 
 
     @Override
-    public List<Info_delivery> getInfoByOrderID(int order_id) {
-        List<Info_delivery> list = new ArrayList<>();
+    public Info_delivery getInfoByOrderID(int order_id) {
         String sql ="SELECT * FROM info_delivery where order_id = ?";
 
         try {
@@ -30,17 +28,17 @@ public class Info_DeliveyDAO implements IInfo_DeliveyDAO {
             ps.setInt(1,order_id);
             rs = ps.executeQuery();
             while (rs.next()){
-                list.add(new Info_delivery(rs.getInt("info_id"),
+                return new Info_delivery(rs.getInt("info_id"),
                         order_id,
                         rs.getString("name"),
                         rs.getString("phone"),
                         rs.getString("address"),
-                        rs.getString("note")));
+                        rs.getString("note"));
             }
         } catch (SQLException e) {
             return null;
         }
-        return list;
+        return null;
 
     }
 
