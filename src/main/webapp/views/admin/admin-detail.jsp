@@ -52,11 +52,10 @@
 
 
 
+
                     <li class="list-group-item">Tên người nhận: ${info.name}</li>
                     <li class="list-group-item">Địa chỉ nhận hàng: ${info.address}</li>
                     <li class="list-group-item">Số điện thoại:${info.phone}</li>
-
-
 
                     <c:forEach items="${delivery}" var="de">
                         <c:if test="${orders.delivery_id == de.delivery_id}">

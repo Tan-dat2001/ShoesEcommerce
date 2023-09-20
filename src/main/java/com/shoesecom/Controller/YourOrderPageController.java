@@ -34,6 +34,7 @@ public class YourOrderPageController extends HttpServlet {
         List<Info_delivery> infoDeliveries = new ArrayList<>();
         Info_delivery infoDelivery = new Info_delivery();
         Info_DeliveyDAO infoDeliveyDAO = new Info_DeliveyDAO();
+        List<Order_status> listOrderStatus = new ArrayList<>();
         for(Order order:listOrder){
             //Lấy thông tin đơn hàng
             List<Detail> listOrderDetail = detailService.getDetailByID(order.getOrder_id());
@@ -44,8 +45,9 @@ public class YourOrderPageController extends HttpServlet {
             request.setAttribute("infoDeliveries",infoDeliveries);
             //            System.out.println(infoDelivery);
             //Trạng thái đơn hàng
-            List<Order_status> orderStatus = statusService.getStatusByID(order.getStatus_id());
-            request.setAttribute("orderStatus",orderStatus);
+            Order_status orderStatus = statusService.getStatusByID(order.getStatus_id());
+            listOrderStatus.add(orderStatus);
+            request.setAttribute("listOrderStatus",listOrderStatus);
         }
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/your-order.jsp");
         rd.forward(request,response);

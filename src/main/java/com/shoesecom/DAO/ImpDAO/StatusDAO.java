@@ -37,7 +37,7 @@ public class StatusDAO implements IStatusDAO {
     }
 
     @Override
-    public List<Order_status> getStatusByID(int status_id) {
+    public Order_status getStatusByID(int status_id) {
         List<Order_status> list = new ArrayList<>();
         String sql ="SELECT * FROM order_status where status_id = ?";
 
@@ -47,13 +47,13 @@ public class StatusDAO implements IStatusDAO {
             ps.setInt(1,status_id);
             rs = ps.executeQuery();
             while (rs.next()){
-                list.add(new Order_status(
+                return new Order_status(
                         status_id,
-                        rs.getString("status_name")));
+                        rs.getString("status_name"));
             }
         } catch (SQLException e) {
             return null;
         }
-        return list;
+        return null;
     }
 }

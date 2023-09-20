@@ -16,7 +16,7 @@ public class StatusService implements IStatusService {
     }
 
     @Override
-    public List<Order_status> getStatusByID(int status_id) {
+    public Order_status getStatusByID(int status_id) {
         return statusDAO.getStatusByID(status_id);
     }
 }
