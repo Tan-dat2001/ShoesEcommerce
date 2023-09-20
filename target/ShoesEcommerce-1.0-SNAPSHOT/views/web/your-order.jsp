@@ -42,14 +42,10 @@
 
             <div class="content-panel">
                 <c:forEach var="o" items="${listOrder}">
-                    <%-- 							<c:set var="info" value="${infoDelivery}" /> --%>
                     <div class="bg-white card mb-4 order-list shadow-sm">
                         <div class="gold-members p-4">
                             <a href="#"> </a>
                             <div class="media">
-                                <!-- <a href="#"> <img class="mr-4" src="images/aothun1.jpg"
-                                    alt="Generic placeholder image">
-                                </a> -->
                                 <div class="media-body">
                                     <a href="#">
                             <span class="float-right text-info">Mã đơn hàng: #${o.order_id}
@@ -83,7 +79,7 @@
                                     </div>
                                     <hr>
                                     <div class="float-right">
-                                        <a class="btn btn-sm btn-outline-primary" href="orderDetail-page?orderId=${o.order_id}"><i
+                                        <a class="btn btn-sm btn-outline-primary" href="product-detail?orderId=${o.order_id}"><i
                                                 class="icofont-headphone-alt"></i> Xem chi tiết</a>
                                         <!-- <a	class="btn btn-sm btn-primary" href="#"><i
                                             class="icofont-refresh"></i> Mua Lại</a> -->

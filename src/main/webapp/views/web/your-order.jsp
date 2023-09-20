@@ -79,7 +79,7 @@
                                     </div>
                                     <hr>
                                     <div class="float-right">
-                                        <a class="btn btn-sm btn-outline-primary" href="orderDetail-page?orderId=${o.order_id}"><i
+                                        <a class="btn btn-sm btn-outline-primary" href="order-detail?orderId=${o.order_id}"><i
                                                 class="icofont-headphone-alt"></i> Xem chi tiết</a>
                                         <!-- <a	class="btn btn-sm btn-primary" href="#"><i
                                             class="icofont-refresh"></i> Mua Lại</a> -->

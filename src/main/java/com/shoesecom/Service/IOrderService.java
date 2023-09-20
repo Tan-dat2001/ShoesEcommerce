@@ -9,10 +9,11 @@ import java.util.List;
 public interface IOrderService {
     List<Order> getAll();
 
-    List<Order> getOrderByID(int order_id);
+    Order getOrderByID(int order_id);
 
     List<Order> getAllOrderByAccountId(int id);
 
     void addOrder(Account account, Cart cart, Order order);
+    Order changeStatusOrder(int order_id, int status_id);
 
 }

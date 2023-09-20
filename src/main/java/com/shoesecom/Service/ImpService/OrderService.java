@@ -18,7 +18,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<Order> getOrderByID(int order_id) {
+    public Order getOrderByID(int order_id) {
         return orderDAO.getOrderByID(order_id);
     }
 
@@ -30,6 +30,11 @@ public class OrderService implements IOrderService {
     @Override
     public void addOrder(Account account, Cart cart, Order order) {
         orderDAO.addOrder(account,cart,order);
+    }
+
+    @Override
+    public Order changeStatusOrder(int order_id, int status_id) {
+        return orderDAO.changeStatusOrder(order_id,status_id);
     }
 
 }

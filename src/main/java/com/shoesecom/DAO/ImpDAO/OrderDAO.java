@@ -18,7 +18,7 @@ public class OrderDAO implements IOrderDAO {
     @Override
     public List<Order> getAll() {
         List<Order> list = new ArrayList<>();
-        String sql ="SELECT * FROM orderclothes order by order_id desc";
+        String sql ="SELECT * FROM orderclothes ";
 
         try {
             statement = DBConnect.getInstall().get();
@@ -48,8 +48,8 @@ public class OrderDAO implements IOrderDAO {
     }
 
     @Override
-    public List<Order> getOrderByID(int order_id) {
-        List<Order> list = new ArrayList<>();
+    public Order getOrderByID(int order_id) {
+
         String sql = "SELECT * FROM orderclothes where order_id=?";
         try {
             statement = DBConnect.getInstall().get();
@@ -59,7 +59,7 @@ public class OrderDAO implements IOrderDAO {
             while (rs.next()){
                 Timestamp timestamp = rs.getTimestamp("order_date");
                 LocalDateTime orderDate = timestamp.toLocalDateTime();
-                list.add(new Order(order_id,
+                return new Order(order_id,
                         rs.getInt("account_id"),
                         rs.getInt("payment_id"),
                         rs.getInt("delivery_id"),
@@ -71,12 +71,12 @@ public class OrderDAO implements IOrderDAO {
                         rs.getTimestamp("create_at"),
                         rs.getString("create_by"),
                         rs.getTimestamp("update_at"),
-                        rs.getString("update_by")));
+                        rs.getString("update_by"));
             }
         } catch (SQLException e) {
             return null;
         }
-        return list;
+        return null;
     }
 
     @Override
@@ -174,7 +174,24 @@ public class OrderDAO implements IOrderDAO {
 
     }
 
+    @Override
+    public Order changeStatusOrder(int order_id, int status_id) {
+        String sql = "UPDATE `orderclothes` SET `status_id`=? WHERE order_id = ?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+
+            ps.setInt(1, status_id);
+            ps.setInt(2, order_id);
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
     public static void main(String[] args) {
-        System.out.println(new OrderDAO().getAllOrderByAccountId(1));
+        System.out.println(new OrderDAO().changeStatusOrder(1,1));
     }
 }
