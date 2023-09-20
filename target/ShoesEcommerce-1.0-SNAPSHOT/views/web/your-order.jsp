@@ -52,7 +52,7 @@
                                 <i class="icofont-check-circled text-success"></i>
                             </span>
                                     </a>
-                                    <c:forEach var="info" items="${infoDelivery}">
+                                    <c:forEach var="info" items="${infoDeliveries}">
                                         <c:if test="${o.order_id == info.order_id}">
                                             <h3 class="mb-2" style="font-weight:bold;"> Người nhận: ${info.name}</h3>
                                             <p class="mb-1">Số điện thoại: ${info.phone}</p>
@@ -79,7 +79,7 @@
                                     </div>
                                     <hr>
                                     <div class="float-right">
-                                        <a class="btn btn-sm btn-outline-primary" href="product-detail?orderId=${o.order_id}"><i
+                                        <a class="btn btn-sm btn-outline-primary" href="order-detail?orderId=${o.order_id}"><i
                                                 class="icofont-headphone-alt"></i> Xem chi tiết</a>
                                         <!-- <a	class="btn btn-sm btn-primary" href="#"><i
                                             class="icofont-refresh"></i> Mua Lại</a> -->

@@ -12,7 +12,7 @@ public class Info_deliveryService implements IInfo_deliveryService {
     private IInfo_DeliveyDAO info_deliveyDAO;
 
     @Override
-    public List<Info_delivery> getInfoByOrderID(int order_id) {
+    public Info_delivery getInfoByOrderID(int order_id) {
         return info_deliveyDAO.getInfoByOrderID(order_id);
     }
 

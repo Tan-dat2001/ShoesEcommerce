@@ -49,12 +49,14 @@
         <div class="col-md-5">
             <h1 class="app-page-title mb-0">Thông tin gửi hàng</h1>
             <ul class="list-group">
+
                 <c:forEach items="${info}" var="i">
 
                     <li class="list-group-item">Tên người nhận: ${i.name}</li>
                     <li class="list-group-item">Địa chỉ nhận hàng: ${i.address}</li>
                     <li class="list-group-item">Số điện thoại:${i.phone}</li>
                 </c:forEach>
+
 
                     <c:forEach items="${delivery}" var="de">
                         <c:if test="${orders.delivery_id == de.delivery_id}">

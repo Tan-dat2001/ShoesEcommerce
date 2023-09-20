@@ -191,7 +191,6 @@ public class OrderDAO implements IOrderDAO {
 
     }
 
-    public static void main(String[] args) {
-        System.out.println(new OrderDAO().changeStatusOrder(1,1));
-    }
+
+
 }

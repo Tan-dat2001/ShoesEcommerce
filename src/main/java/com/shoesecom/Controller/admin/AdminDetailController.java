@@ -40,7 +40,7 @@ public class AdminDetailController extends HttpServlet {
         List<Delivery> delivery = deliveryService.getAll();
         request.setAttribute("delivery",delivery);
 
-        List<Info_delivery> info = info_deliveryService.getInfoByOrderID(order_id);
+        Info_delivery info = info_deliveryService.getInfoByOrderID(order_id);
         request.setAttribute("info",info);
 
         request.getRequestDispatcher("/views/admin/admin-detail.jsp").forward(request,response);
