@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IStatusDAO {
     List<Order_status> getAll();
-    List<Order_status> getStatusByID(int status_id);
+    Order_status getStatusByID(int status_id);
 
 }
