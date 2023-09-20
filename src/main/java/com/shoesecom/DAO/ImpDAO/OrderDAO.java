@@ -18,7 +18,7 @@ public class OrderDAO implements IOrderDAO {
     @Override
     public List<Order> getAll() {
         List<Order> list = new ArrayList<>();
-        String sql ="SELECT * FROM orderclothes order by order_id desc";
+        String sql ="SELECT * FROM orderclothes ";
 
         try {
             statement = DBConnect.getInstall().get();
@@ -49,6 +49,7 @@ public class OrderDAO implements IOrderDAO {
 
     @Override
     public Order getOrderByID(int order_id) {
+
         String sql = "SELECT * FROM orderclothes where order_id=?";
         try {
             statement = DBConnect.getInstall().get();
@@ -173,7 +174,23 @@ public class OrderDAO implements IOrderDAO {
 
     }
 
-    public static void main(String[] args) {
-        System.out.println(new OrderDAO().getOrderByID(1));
+    @Override
+    public Order changeStatusOrder(int order_id, int status_id) {
+        String sql = "UPDATE `orderclothes` SET `status_id`=? WHERE order_id = ?";
+        try {
+            statement = DBConnect.getInstall().get();
+            ps = statement.getConnection().prepareStatement(sql);
+
+            ps.setInt(1, status_id);
+            ps.setInt(2, order_id);
+            ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+
     }
+
+
+
 }

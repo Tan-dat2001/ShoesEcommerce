@@ -68,8 +68,25 @@
                                         </c:forEach>
                                         <c:forEach items="${status}" var="s">
                                             <c:if test="${o.status_id eq s.status_id}">
-                                                <td class="cell" style="text-align: center; color: #0da95f">${s.status_name}</td>
+<%--                                                <td class="cell" style="text-align: center; color: #0da95f"> <span class="badge bg-success"> ${s.status_name}</span></td>--%>
+                                                <c:if test="${o.status_id == 1 }">
+                                                    <td class="cell" style="text-align: center; color: #0da95f"> <span class="badge bg-warning"> ${s.status_name}</span></td>
+                                                </c:if>
+                                                <c:if test="${o.status_id == 2 }">
+                                                    <td class="cell" style="text-align: center; color: #0da95f"> <span class="badge bg-success"> ${s.status_name}</span></td>
+                                                </c:if>
+                                                <c:if test="${o.status_id == 3 }">
+                                                    <td class="cell" style="text-align: center; color: #0da95f"> <span class="badge bg-info"> ${s.status_name}</span></td>
+                                                </c:if>
+                                                <c:if test="${o.status_id == 4 }">
+                                                    <td class="cell" style="text-align: center; color: #0da95f"> <span class="badge bg-secondary"> ${s.status_name}</span></td>
+                                                </c:if>
+                                                <c:if test="${o.status_id == 5 }">
+                                                    <td class="cell" style="text-align: center; color: #0da95f"> <span class="badge bg-danger"> ${s.status_name}</span></td>
+                                                </c:if>
+
                                             </c:if>
+
                                         </c:forEach>
 
 
@@ -77,33 +94,6 @@
                                         <td class="cell" style="text-align: center">${o.order_note}</td>
                                         <td class="cell">${o.updateAt}</td>
 
-
-<%--                                        <c:forEach items="${category}" var="c">--%>
-<%--                                            <c:if test="${c.category_id == p.category_id}">--%>
-<%--                                                <td class="cell"><span class="truncate">${c.category_name}</span></td>--%>
-<%--                                            </c:if>--%>
-<%--                                        </c:forEach>--%>
-<%--                                        <td class="cell">--%>
-
-<%--                                            <c:forEach items="${psc}" var="psc">--%>
-<%--                                                <c:if test="${p.product_id == psc.product_id}">--%>
-<%--                                                    &lt;%&ndash;                                                <td class="cell">${psc.size_id}</td>&ndash;%&gt;--%>
-<%--                                                    <c:forEach items="${size}" var="s">--%>
-<%--                                                        <c:if test="${psc.size_id == s.id}">--%>
-<%--                                                            <span class="truncate">${s.name}</span>--%>
-<%--                                                        </c:if>--%>
-<%--                                                    </c:forEach>--%>
-<%--                                                </c:if>--%>
-<%--                                            </c:forEach>--%>
-<%--                                        </td>--%>
-
-<%--                                        <c:if test="${o.status_id == 'enabled'}">--%>
-<%--                                            <td class="cell"><span class="badge bg-success">${p.status}</span></td>--%>
-<%--                                        </c:if>--%>
-<%--                                        <c:if test="${p.status == 'disabled'}">--%>
-<%--                                            <td class="cell"><span class="badge bg-danger">${p.status}</span></td>--%>
-<%--                                        </c:if>--%>
-                                            <%--<td class="cell" style="width: 300px">${p.product_desc}</td>--%>
 
                                         <td class="cell"><a href="admin-list-detail?orderId=${o.order_id}">Xem</a>
 

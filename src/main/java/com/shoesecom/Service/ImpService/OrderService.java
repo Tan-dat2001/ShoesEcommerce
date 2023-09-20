@@ -32,4 +32,9 @@ public class OrderService implements IOrderService {
         orderDAO.addOrder(account,cart,order);
     }
 
+    @Override
+    public Order changeStatusOrder(int order_id, int status_id) {
+        return orderDAO.changeStatusOrder(order_id,status_id);
+    }
+
 }

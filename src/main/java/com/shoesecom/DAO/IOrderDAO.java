@@ -17,5 +17,6 @@ public interface IOrderDAO {
 
     void updateOrder(Order order);
 
+    Order changeStatusOrder(int order_id, int status_id);
 
 }

@@ -14,5 +14,6 @@ public interface IOrderService {
     List<Order> getAllOrderByAccountId(int id);
 
     void addOrder(Account account, Cart cart, Order order);
+    Order changeStatusOrder(int order_id, int status_id);
 
 }
