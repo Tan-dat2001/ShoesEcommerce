@@ -43,21 +43,15 @@
         <div class="col-xl-3 col-lg-4 col-md-5">
             <div class="sidebar-categories">
                 <div class="head">Hồ sơ</div>
-
                 <ul class="main-categories">
-
                     <li class="main-nav-list">
                         <a href="web-profile">Thông tin tài khoản</a>
                         <a href="your-order">Đơn hàng của bạn</a>
                         <a href="update-pass">Đổi mật khẩu</a>
                         <a href="log-out">Đăng xuất</a>
                     </li>
-
                 </ul>
-
-
             </div>
-
         </div>
         <div class="sidebar-filter mt-50">
             <div class="sidebar-categories"></div>
@@ -65,10 +59,8 @@
 
         <div class="col-xl-9 col-lg-8 col-md-7">
             <h1 style="text-align: center">Hồ sơ </h1>
-
             <!-- Start Best Seller -->
             <section class="lattest-product-area pb-40 category-list">
-
                     <!-- single product -->
                     <form action="update-profile" method="post">
 
@@ -99,23 +91,12 @@
                         <label class="mb-2">Ngày tháng năm sinh</label>
                         <input type="date" name="dateofbirth" class="form-control" value="<%=dateofbirth%>" >
                         </div>
-
                         <div class="mb-3">
                             <button type="submit" class="btn btn-outline-primary">Lưu</button>
                         </div>
-
-
                     </form>
-
-
-
-
-
-
-
             </section>
             <!-- End Best Seller -->
-
         </div>
     </div>
 </div>

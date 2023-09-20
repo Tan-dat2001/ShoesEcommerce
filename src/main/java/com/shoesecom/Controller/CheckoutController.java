@@ -40,7 +40,6 @@ public class CheckoutController extends HttpServlet {
         String phone = request.getParameter("number");
         String address = request.getParameter("address");
         String note = request.getParameter("note");
-        int deliveryId = Integer.parseInt(request.getParameter("delivery"));
         LocalDateTime currentTime = java.time.LocalDateTime.now();
 
         HttpSession session = request.getSession();
@@ -54,12 +53,12 @@ public class CheckoutController extends HttpServlet {
         Order order = new Order();
         order.setAccount_id(account.getAccount_id());
         order.setPayment_id(4);
-        order.setDelivery_id(deliveryId);
+        order.setDelivery_id(5);
 //        order.setStatus_id(1);
         order.setPayment_transaction("chưa thanh toán");
         order.setOrder_date(currentTime);
         order.setOrder_note(note);
-        order.setTotal_amount(total);
+        order.setTotal_amount(total-deliveryService.getDeliveryByID(5).getDelivery_price());
 
         orderService.addOrder(account,cart,order);
 
