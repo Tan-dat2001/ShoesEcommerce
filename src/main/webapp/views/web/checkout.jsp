@@ -56,23 +56,23 @@
                                       style="height: 60px;"></textarea>
                         </div>
 
-                        <div class="col-md-12 form-group">
-                            <div class="title-delivery" style="    font-size: 18px;
-                                color: #222222;
-                                border-bottom: 1px solid #eee;
-                                padding-bottom: 10px;
-                                margin-bottom: 20px;">Phương thức vận chuyển
-                            </div>
-                            <div class="delivery-method" style="font-size: 16px;">
-                                <c:forEach var="delivery" items="${listDelivery}">
-                                    <input type="radio" name="delivery" value="${delivery.delivery_id}"
-                                           id="${delivery.delivery_id}">
-                                    <label for="${delivery.delivery_id}">${delivery.delivery_name} <span
-                                            style="margin-left: 150px;">${delivery.delivery_price}</span></label>
-                                    <br>
-                                </c:forEach>
-                            </div>
-                        </div>
+<%--                        <div class="col-md-12 form-group">--%>
+<%--                            <div class="title-delivery" style="    font-size: 18px;--%>
+<%--                                color: #222222;--%>
+<%--                                border-bottom: 1px solid #eee;--%>
+<%--                                padding-bottom: 10px;--%>
+<%--                                margin-bottom: 20px;">Phương thức vận chuyển--%>
+<%--                            </div>--%>
+<%--                            <div class="delivery-method" style="font-size: 16px;">--%>
+<%--                                <c:forEach var="delivery" items="${listDelivery}">--%>
+<%--                                    <input type="radio" name="delivery" value="${delivery.delivery_id}"--%>
+<%--                                           id="${delivery.delivery_id}">--%>
+<%--                                    <label for="${delivery.delivery_id}">${delivery.delivery_name} <span--%>
+<%--                                            style="margin-left: 150px;">${delivery.delivery_price}</span></label>--%>
+<%--                                    <br>--%>
+<%--                                </c:forEach>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                     </div>
                     <div class="col-lg-4">
                         <div class="order_box">
@@ -104,8 +104,8 @@
                                     <c:set var="total" value="${total + itemTotal}"/>
                                 </c:forEach>
                                 <li><a href="#">Tổng tạm tính <span>${total}</span></a></li>
-                                <li><a href="#">Chi phí vận chuyển <span>Flat rate: $50.00</span></a></li>
-                                <li><a href="#">Tổng đơn hàng <span>$2210.00</span></a></li>
+                                <li><a href="#">Chi phí vận chuyển <span> 50000 đ</span></a></li>
+                                <li><a href="#">Tổng đơn hàng <span>${total - 50000}</span></a></li>
                             </ul>
 
                             <button class="primary-btn" type="submit" style="border: none;">Thanh Toán</button>

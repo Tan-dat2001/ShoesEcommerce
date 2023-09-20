@@ -56,18 +56,6 @@
                             <div class="select-size">Chọn kích cỡ</div>
                             <div class="product-size">
                                 <div class="product-item-size">
-                                    <input type="radio" id="size35" name="size" value="35">
-                                    <label for="size35">35</label><br>
-                                </div>
-                                <div class="product-item-size">
-                                    <input type="radio" id="size36" name="size" value="36">
-                                    <label for="size36">36</label><br>
-                                </div>
-                                <div class="product-item-size">
-                                    <input type="radio" id="size37" name="size" value="37">
-                                    <label for="size37">37</label>
-                                </div>
-                                <div class="product-item-size">
                                     <input type="radio" id="size38" name="size" value="38">
                                     <label for="size38">38</label>
                                 </div>
@@ -86,6 +74,10 @@
                                 <div class="product-item-size">
                                     <input type="radio" id="size42" name="size" value="42">
                                     <label for="size42">42</label>
+                                </div>
+                                <div class="product-item-size">
+                                    <input type="radio" id="size43" name="size" value="43">
+                                    <label for="size43">43</label>
                                 </div>
                             </div>
                         </div>
