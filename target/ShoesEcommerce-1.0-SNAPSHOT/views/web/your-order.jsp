@@ -69,7 +69,7 @@
                                                     class="text-danger">${o.payment_transaction}</span></p>
                                         </div>
                                         <div class="col-6 text-right">
-                                            <c:forEach var="st" items="${orderStatus}">
+                                            <c:forEach var="st" items="${listOrderStatus}">
                                                 <c:if test="${st.status_id == o.status_id}">
                                                     <c:set var="status" value="${st.status_name }"/>
                                                 </c:if>
